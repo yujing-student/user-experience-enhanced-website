@@ -1,0 +1,56 @@
+<%- include('./partials/head') %>
+<main class="">
+    <section class="favorite-section-search">
+
+        <form action="/" method="get" class="">
+            <label for="title" class="search-tekst"><span class="search-text">zoek op titel</span>
+                <input type="search" name="title" class="input-search">
+                <!--ik zeg nu ga zoeken en als name geef ik mee dat het id is en dat daar op gezocht word-->
+            </label>
+            <button type="submit" class="styling-searchbutton">zoeken</button>
+        </form>
+        <label for="filters">Kies op welke lijst je wilt filteren</label><select id="filters">
+            <% lists.forEach(list => { %>
+                <option value="lijst1"><%= list.title %></option>
+            <% }) %>
+        </select>
+
+
+    </section>
+    <section>
+        <h2>Uw huizen lijsten</h2>
+
+
+
+        <div class="grid-house-lists">
+
+            <% lists.forEach(list => { %>
+
+                <article>
+                    <ol class="names-of-houses">
+
+                        <li><a href="/lijsten/<%= list.id %>"></a>
+
+
+                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image %>" alt="House Image" class="image_size image_house_icon">
+                        </li>
+                        <li class="height-li-items  height-li-items-title"><a
+                                    href="/lijsten/<%= list.id %>"
+                                    class="link-to-house"><%= list.title %></a></li>
+                        <li class="height-li-items omschrijving_li_items">Huizen: <%= list.houses_array.length %></li>
+                        <button type="button" class="button-got-list"><a href="/lijsten/<%= list.id %>">Bekijk
+                                lijst</a></button>
+
+                    </ol>
+
+                </article>
+
+            <% }) %>
+        </div>
+
+
+    </section>
+
+
+</main>
+<%- include('./partials/foot') %>
