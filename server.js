@@ -10,7 +10,8 @@ const app = express()
 
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*`)
-const baseUlr = await fetchJson(`https://fdnd-agency.directus.app/items/`)
+const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
+// baseurl gebruiken werkt niet dan word er niks geladen
 
 
 const messages = []//dit is voor de detailpage
@@ -112,6 +113,7 @@ app.get('/score/:id', async function (request, response) {
 
     try {
         const house_details = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`);
+        // const house_details = await fetchJson(`${baseUlr}f_houses${request.params.id}/?fields=*.*.*`);
 
         if (house_details.data) { // Check if house_details.data exists
             response.render('score', {
@@ -178,6 +180,7 @@ app.post('/score/:id', async function (request, response) {
                 // Redirect naar de persoon pagina
                 response.redirect(303, '/score/' + request.params.id)
             })
+
         })
 })
 
