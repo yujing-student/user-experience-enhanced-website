@@ -4,7 +4,7 @@ const { get } = import('http');
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
-// Haal alle images uit de WHOIS API op
+// Haal alle images uit de WHOIS API opggg
 
 const app = express()
 
