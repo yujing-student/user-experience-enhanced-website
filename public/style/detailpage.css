@@ -1,0 +1,185 @@
+@font-face {
+    font-family: "proximanova";
+    src: url("public/assets/font/ProximaNova-Regular_2607783814.otf");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 auto;
+    font-family: proximanova, sans-serif;
+    width: 100%;
+    line-height: 1.5em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*https://brand.funda.nl/d/d9gw4zTPqYFU/brand-guide?#/basics-1/kleur*/
+/*general*/
+:root {
+    --blue: #0042B3; /*huisstijl #0071B3 orgineel*/
+    --white: #ffffff;
+    --orange: #F7A100;
+    --black: #333333;
+
+    --margin-input-fields: 0 0 1em 0;
+    --margin-2-em: 2em;
+}
+
+
+/*dit staat op volgorde van de ejs detailpage*/
+main{
+    margin: 2em 2em 0 0;
+}
+li {
+    list-style-type: none;
+}
+
+.image-size {
+    width: 200px;
+}
+.image-grid{
+    padding-left: 2em;
+}
+.houses-images {
+    /*object-fit: cover;*/
+    height: 200px;
+    width: 200px;
+    aspect-ratio: 1/1;
+}
+
+.address-h1 {
+    margin-inline: 1.5em;
+}
+
+.detailpage-list-house {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 8px;
+}
+.icons{
+    margin-bottom: -0.2em;
+}
+
+.text-font {
+    /*font-size: 1.2em;*/
+}
+
+.tuin, .kamers,.wonen {
+    margin-left: 0.5em;
+}
+
+.price {
+    font-size: 1.5em;
+}
+
+.description {
+    margin-inline: 2.4em;
+    border-top: solid #dddddd;
+}
+
+.description-text {
+    line-height: 1.5em;
+}
+
+
+.button-notes {
+    background-color: var(--orange);
+    font-size: 1.2em;
+    border: none;
+}
+
+.detailpage-hide-notes {
+    margin-left: 2em;
+    background-color: #e6f2f7;
+    display: none;
+}
+
+.detailpage-hide-notes-open {
+    margin-left: 2em;
+    display: block;
+    background-color: #e6f2f7;
+}
+
+.h2-score {
+    margin-left: 1.5em;
+    padding-top: 1em;
+}
+
+.p-score {
+    margin-left: 2.3em;
+    margin-bottom: 2em;
+}
+
+.grid-scores {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+}
+
+.score-range {
+    /*margin:0 0 3em 0;*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+    /*gap: 15px;*/
+    margin-bottom: 1em;
+    max-width: 21em;
+}
+
+.distance-score {
+    margin-left: 2em;
+}
+
+.berichten-score {
+    margin-left: 1.6em;
+    margin-top: 2em;
+}
+
+.chatbox {
+    /*margin:0 0 3em 0;*/
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(0px, 1fr));
+    /*gap: 15px;*/
+}
+
+.notes {
+    width: 10em;
+}
+
+.output {
+    margin-left: 2em;
+    padding-bottom: 2em;
+}
+
+.message {
+    list-style: disc;
+}
+.go-to-score{
+    color: var(--blue);
+    font-size: 1.1em;
+}
+
+@media (min-width: 650px) {
+
+    /*media query 650 px*/
+    .houses-images {
+        object-fit: cover;
+        aspect-ratio: 1/1;
+    }
+
+    .score-range {
+        margin: 0 0 1em 0;
+    }
+}
+
+@media (min-width: 1000px) {
+    .grid-scores {
+        display: grid;
+        grid-template-columns: auto 37em;
+        max-width: 63em;
+    }
+}

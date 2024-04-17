@@ -169,7 +169,7 @@ app.post('/score/:id', async function (request, response) {
 
             //     hier pas je de data aan
             fetch('https://fdnd-agency.directus.app/items/f_houses/' + request.params.id, {
-                method: 'patch',
+                method: 'post',
                 body: JSON.stringify({
                     custom: apiResponse.data.custom
                 }),
