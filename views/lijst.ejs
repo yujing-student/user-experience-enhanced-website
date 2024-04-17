@@ -7,10 +7,11 @@
         <h2>Gebruikers</h2>
         <p>Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
         <div class="">
-            <img src="../images/geel.jpg" class="" alt="user geel">
-            <img src="../images/blauw.jpg" class="" alt="user geel">
-            <img src="../images/rood.jpg" class="" alt="user geel">
-            <img src="../images/groen.jpg" class="" alt="user geel">
+            <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
+            <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
+            <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
+            <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
+
         </div>
 
     </section>
@@ -22,7 +23,7 @@
         </ul>
     </section>
 
-    <div class="">
+    <div class="list_houses_grid">
 
         <% list.houses.forEach(house => { %>
 
@@ -41,9 +42,9 @@
 
                     <li class="child_li_house_card"><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></li>
                     <li class="child_li_house_card price_li">€<%= house.f_houses_id.price %></li>
-                    <li class=" agent_long_text"><%= house.f_houses_id.agent %></li>
-                    <li class="child_li_house_card">
-                        <button class="button_score_page">
+                    <li class=" child_li_house_card"><%= house.f_houses_id.agent %></li>
+                    <li class="">
+                        <button class="button-go_to_house">
                             <a class="special_link" href="../score/<%= house.f_houses_id.id %>">Bekijk de score
                             </a>
                         </button>

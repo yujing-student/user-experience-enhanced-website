@@ -108,6 +108,11 @@ option:focus-visible{
     object-fit: cover;
 
 }
+
+.position_items_text{
+    margin-left: 2em;
+}
+
 .user-profiles {
     width: 170px;
     padding-bottom: 1em;
@@ -118,8 +123,10 @@ option:focus-visible{
     width: 10em;
     background-color: #F7A100;
     border: none;
-    font-size: 1.3em;
+    font-size: 1.5em;
     color: black;
+    margin-left: 1.3em;
+    margin-bottom: 1em;
 
 }
 .link-to-house {

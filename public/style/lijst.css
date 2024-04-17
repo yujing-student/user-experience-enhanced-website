@@ -1,5 +1,9 @@
 
-
+.list_houses_grid{
+    display: grid;
+    gap: 3.5em;
+    grid-template-columns: repeat(auto-fit, 18em);
+}
 .houses {
     /*width: 16em;*/
     /*padding: 0 0 0 3.5em;*/
@@ -9,28 +13,23 @@
     /*padding-left: 1em;*/
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
 }
 
 .image_house_data {
-    /*padding-left: 0;*/
-    /*padding left default op 0 zodat het recht komt te staan */
     display: grid;
-    gap: 0.5em;
-    padding-right: 2em;
-    width: 17em;
-    padding-left: 2em;
-    border: solid var(--gray) 0.2em;
-    /*grid-template-rows: 12em 1em 1em 1em 1em 1em;*/
-    /*grid-template-rows: 12em repeat(5, 1.1em);*/
-    /*    door deze code gaat de tekt  bovenop elkaa zitten*/
+    grid-row-gap: 0.5em;
+    line-height: 1.5;
+    padding: 0;
+    border: solid #dddddd;
 }
 
-.image-size {
+.image_size {
     width: 100%;
     object-fit: cover;
 }
+
 
 
 .child_li_house_card{
@@ -39,9 +38,20 @@
     text-overflow: ellipsis;
     height: 1.5em;
     line-height: 1.5em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
+.button-go_to_house{
+    width: 8em;
+    background-color: #F7A100;
+    border: none;
+    font-size: 1.5em;
+    color: black;
+    margin-left: 1.3em;
+    margin-bottom: 1em;
 
+}
 /*todo hover states op option dus de sorteer functie en de pagina mist nog veel opmaak*/
 
 .agent_long_text{
