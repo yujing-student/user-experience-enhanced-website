@@ -9,7 +9,8 @@
         <ul class="house_details">
             <li class="house_details_text"><img
                         src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>" alt="image_house"
-                        class="house"></li>
+                        class="house"
+                        width="400" height="400"></li>
             <li class="house_details_text"><%= house.street %> <%= house.house_nr %> </li>
             <li class="house_details_text"><%= house.city %> <%= house.postal_code %></li>
 
@@ -63,8 +64,6 @@
         </section>
 
         <section class="show-the-scores">
-
-
             <h2 class="">Beoordeling</h2>
             <ul class="output_other_users">
                 <% if (algemeen.length > 0) { %>
