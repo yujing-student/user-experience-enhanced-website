@@ -1,37 +1,37 @@
-@font-face {
-    font-family: "proximanova";
-    src: url("/public/assets/font/ProximaNova-Regular_2607783814.otf");
-}
+/*@font-face {*/
+/*    font-family: "proximanova";*/
+/*    src: url("/public/assets/font/ProximaNova-Regular_2607783814.otf");*/
+/*}*/
 
-:root {
-    --blue: #0042B3; /*huisstijl #0071B3 orgineel*/
-    --white: #ffffff;
-    --orange: #F7A100;
-    --black: #333333;
-    --gray: #dddddd;
+/*:root {*/
+/*    --blue: #0042B3; !*huisstijl #0071B3 orgineel*!*/
+/*    --white: #ffffff;*/
+/*    --orange: #F7A100;*/
+/*    --black: #333333;*/
+/*    --gray: #dddddd;*/
 
-    --margin-input-fields: 0 0 1em 0;
-    --margin-2-em: 2em;
-}
+/*    --margin-input-fields: 0 0 1em 0;*/
+/*    --margin-2-em: 2em;*/
+/*}*/
 
 
-html {
-    scroll-behavior: smooth;
-}
+/*html {*/
+/*    scroll-behavior: smooth;*/
+/*}*/
 
-body {
-    margin: 0 auto;
-    font-family: proximanova, sans-serif;
-    width: 100%;
-}
+/*body {*/
+/*    margin: 0 auto;*/
+/*    font-family: proximanova, sans-serif;*/
+/*    width: 100%;*/
+/*}*/
 
-* {
-    box-sizing: border-box;
-}
+/** {*/
+/*    box-sizing: border-box;*/
+/*}*/
 
-li {
-    list-style-type: none;
-}
+/*li {*/
+/*    list-style-type: none;*/
+/*}*/
 
 a {
     text-decoration: none;
@@ -51,7 +51,8 @@ header {
 }
 
 .menu-ul {
-    display: none;
+    /*display: none;*/
+    padding-left: 4em;
 }
 
 .menu-ul-open {
@@ -66,6 +67,9 @@ header {
 .hamburger-icon {
 
     background-color: var(--orange);
+    margin-top: 2em;
+    display: flex;
+
 
     border: none;
 }
@@ -139,6 +143,7 @@ a:hover {
 @media only screen and (min-width: 700px) {
     .menu-ul {
         column-gap: 2em;
+        padding-left: 3em;
 
     }
 }

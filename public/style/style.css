@@ -43,9 +43,12 @@ a {
 
 /*read the code from above to under as it is in the index ejs*/
 main {
-    /*margin: 2em 2em 2em 1em;*/
-    /*padding-inline: 2em;*/
+    margin: 2em 2em 2em 1em;
+    padding: 0 1em 1em 2em;
 }
+
+
+/*dit is alleen de index*/
 
 .favorite-section-search {
     display: grid;
@@ -101,7 +104,9 @@ option:focus-visible{
 }
 .image_house_icon{
     /*margin-left: -2em;*/
-    width: 240px;
+    width: 100%;
+    object-fit: cover;
+
 }
 .user-profiles {
     width: 170px;
@@ -141,15 +146,6 @@ option:focus-visible{
 
 
 
-/*de 1ste item moet geen border hebben omdat dit lelijk is*/
-@media (width >= 400px) {
-    .grid-house-lists{
-
-        grid-template-columns: repeat(auto-fit, 23em);
-
-    }
-
-}
 
 
 @media (width >= 600px) {
@@ -157,7 +153,7 @@ option:focus-visible{
     .names-of-houses {
         /*margin-left: 0.5em;*/
         max-width: 86em;
-        padding: 0.5em;
+        /*padding: 0.5em;*/
         /*margin: 1em 2em 2em 2em ;*/
         /*height: 30em;*/
 
@@ -168,7 +164,7 @@ option:focus-visible{
 
     .image_house_icon{
         /*margin-left: -2em;*/
-        width: 248px;
+        /*width: 248px;*/
     }
     .grid-house-lists{
         display: grid;

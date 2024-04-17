@@ -1,0 +1,33 @@
+<ul class="output_other_users">
+    <% if (algemeen.length > 0) { %>
+        <% algemeen.forEach(number =>{ %>
+            <li class="house_details_text"> algemeen: <%= number %></li>
+        <% }) %>
+    <% } else { %>
+        <li class="house_details_text">U hebt nog geen score op gegeven</li>
+    <% } %>
+
+    <% if (keuken.length > 0) { %>
+        <% keuken.forEach(kitchen_number =>{ %>
+            <li class="house_details_text"> keuken: <%= kitchen_number %></li>
+        <% }) %>
+    <% } else { %>
+        <li class="house_details_text"> U hebt nog geen score op gegeven</li>
+    <% } %>
+
+    <% if (badkamer.length > 0) { %>
+        <% keuken.forEach(kitchen_number =>{ %>
+            <li class="house_details_text"> Badkamer: <%= kitchen_number %></li>
+        <% }) %>
+    <% } else { %>
+        <li class="house_details_text"> U hebt nog geen score op gegeven</li>
+    <% } %>
+
+    <% if (tuin.length > 0) { %>
+        <% tuin.forEach(kitchen_number =>{ %>
+            <li class="house_details_text"> tuin: <%= kitchen_number %></li>
+        <% }) %>
+    <% } else { %>
+        <li class="house_details_text">U hebt nog geen score op gegeven</li>
+    <% } %>
+</ul>

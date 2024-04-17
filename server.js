@@ -77,7 +77,7 @@ app.get('/lijsten/:id', async function (request, response) {
 });
 
 app.get('/Detailpage/:id', async function (request, response) {
-    const id = request.params.id
+
 
 
     const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}?fields=*.*.*`)
@@ -114,6 +114,12 @@ app.get('/score/:id', async function (request, response) {
     try {
         const house_details = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`);
         // const house_details = await fetchJson(`${baseUlr}f_houses${request.params.id}/?fields=*.*.*`);
+
+
+        house_details.picture = `https://fdnd-agency.directus.app/assets/${house_details.data.poster_image}`
+        house_details.data.poster_image.height = Number(house_details.length).toFixed(2)
+        house_details.data.poster_image.width = Number(house_details.width).toFixed(2)
+
 
         if (house_details.data) { // Check if house_details.data exists
             response.render('score', {
@@ -187,6 +193,8 @@ app.post('/score/:id', async function (request, response) {
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
+
+// todo de style en navbar en deetailpage moeten angelopen worden op onnodige code en in 1 volgorde gezet worden
 
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op

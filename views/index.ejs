@@ -1,24 +1,9 @@
 <%- include('./partials/head') %>
 <main class="">
-    <section class="favorite-section-search">
 
-        <form action="/" method="get" class="">
-            <label for="title" class="search-tekst"><span class="search-text">zoek op titel</span>
-                <input type="search" name="title" class="input-search">
-                <!--ik zeg nu ga zoeken en als name geef ik mee dat het id is en dat daar op gezocht word-->
-            </label>
-            <button type="submit" class="styling-searchbutton">zoeken</button>
-        </form>
-        <label for="filters">Kies op welke lijst je wilt filteren</label><select id="filters">
-            <% lists.forEach(list => { %>
-                <option value="lijst1"><%= list.title %></option>
-            <% }) %>
-        </select>
-
-
-    </section>
     <section>
-        <h2>Uw huizen lijsten</h2>
+        <h2>Uw gedeelde huizen lijsten</h2>
+        <p>Hier kunt u zien welke lijsten u deelt samen met anderen </p>
 
 
 
@@ -32,7 +17,7 @@
                         <li><a href="/lijsten/<%= list.id %>"></a>
 
 
-                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image %>" width="400" alt="House Image" class="image_size image_house_icon">
+                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image %>" width="200" alt="House Image" class="image_size image_house_icon">
                         </li>
                         <li class="height-li-items  height-li-items-title"><a
                                     href="/lijsten/<%= list.id %>"

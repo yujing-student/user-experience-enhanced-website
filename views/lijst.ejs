@@ -7,32 +7,34 @@
         <h2>Gebruikers</h2>
         <p>Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
         <div class="">
-            <img src="../images/geel.jpg" class="user_profiles" alt="user geel">
-            <img src="../images/blauw.jpg" class="user_profiles" alt="user geel">
-            <img src="../images/rood.jpg" class="user_profiles" alt="user geel">
-            <img src="../images/groen.jpg" class="user_profiles" alt="user geel">
+            <img src="../images/geel.jpg" class="" alt="user geel">
+            <img src="../images/blauw.jpg" class="" alt="user geel">
+            <img src="../images/rood.jpg" class="" alt="user geel">
+            <img src="../images/groen.jpg" class="" alt="user geel">
         </div>
 
     </section>
 
-    <section class="users_section">
+    <section class="">
         <h2>Omschrijving</h2>
-        <ul class="output_other_users">
+        <ul class="">
             <li><%= list.description %></li>
         </ul>
     </section>
 
-    <div class="grid_container_houses_lijst">
+    <div class="">
 
         <% list.houses.forEach(house => { %>
 
             <article class="houses">
                 <ul class="image_house_data">
-                    <li><img class="image_size" width="400"
+                    <li>
+                        <img class="image_size" width="200"
                              src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>"
-                             alt="image house"></li>
+                             alt="image house">
+                    </li>
                     <li class="child_li_house_card">
-                        <a href="../Detailpage/<%= house.id %>" class="special_link"><%= house.f_houses_id.street %>
+                        <a href="../Detailpage/<%= house.id %>" class=""><%= house.f_houses_id.street %>
                             <%= house.f_houses_id.house_nr %><%= house.f_houses_id.house_nr_addition %>
                         </a>
                     </li>
