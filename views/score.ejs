@@ -10,7 +10,7 @@
             <li class=""><img
                         src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>" alt="image_house"
                         class="house"
-                        width="200"></li>
+                        width="200px"></li>
             <li class=""><%= house.street %> <%= house.house_nr %> </li>
             <li class=""><%= house.city %> <%= house.postal_code %></li>
 
@@ -85,14 +85,14 @@
         <h2 class="title">Bekijk de beoordelingen van anderen</h2>
         <section class="users_score_rating first_user">
 
-            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200"></p>
+            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
 
             <h2 class="">Jan</h2>
             <%- include('partials/score', {result: house}); %>
 
         </section>
         <section class="users_score_rating second_user">
-            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200"></p>
+            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
 
             <h2 class="">Piet</h2>
             <%- include('partials/score', {result: house}); %>
