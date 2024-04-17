@@ -49,7 +49,11 @@ main {
 
 
 /*dit is alleen de index*/
+.title_description{
+    border-bottom:  solid var(--gray);
+    margin-bottom: 1em;
 
+}
 .favorite-section-search {
     display: grid;
     grid-template-rows: auto auto 1fr;
@@ -91,7 +95,7 @@ option:focus-visible{
 .grid-house-lists{
     display: grid;
     gap: 3.5em;
-    grid-template-columns: repeat(auto-fit, 18em);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
 }
 .names-of-houses {
@@ -105,6 +109,7 @@ option:focus-visible{
 .image_house_icon{
     /*margin-left: -2em;*/
     width: 100%;
+    height: 100%;
     object-fit: cover;
 
 }
@@ -120,10 +125,10 @@ option:focus-visible{
     padding-right: 1em;
 }
 .button-got-list{
-    width: 10em;
+    width: 7em;
     background-color: #F7A100;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.3em;
     color: black;
     margin-left: 1.3em;
     margin-bottom: 1em;
@@ -152,6 +157,23 @@ option:focus-visible{
 }
 
 
+@media (width >= 400px) {
+
+
+    .grid-house-lists{
+        display: grid;
+        gap: 3.5em;
+        grid-template-columns: repeat(auto-fit, 18em);
+    }
+
+    .button-got-list{
+        width: 10em;
+        font-size: 1.5em;
+
+
+    }
+
+}
 
 
 
@@ -177,6 +199,7 @@ option:focus-visible{
         display: grid;
         gap: 3.5em;
         grid-template-columns: repeat(auto-fit,23em);
+        margin-top: 2em;
 
     }
     .height-li-items{

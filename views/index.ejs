@@ -1,11 +1,12 @@
 <%- include('./partials/head') %>
 <main class="">
 
-    <section>
+    <section class="title_description">
         <h2>Uw gedeelde huizen lijsten</h2>
         <p>Hier kunt u zien welke lijsten u deelt samen met anderen </p>
 
 
+    </section>
 
         <div class="grid-house-lists">
 
@@ -17,7 +18,7 @@
                         <li><a href="/lijsten/<%= list.id %>"></a>
 
 
-                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image %>" width="200" alt="House Image" class="image_size image_house_icon">
+                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image %>" width="200" alt="House Image" class=" image_house_icon">
                         </li>
                         <li class="height-li-items  height-li-items-title position_items_text"><a
                                     href="/lijsten/<%= list.id %>"
@@ -34,7 +35,6 @@
         </div>
 
 
-    </section>
 
 
 </main>

@@ -6,7 +6,7 @@
     <section class="users_section">
         <h2>Gebruikers</h2>
         <p>Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
-        <div class="">
+        <div class="div_images_users">
             <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
             <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
             <img src="../assets/images/user_profile.png" class="" alt="user" width="200">
@@ -16,7 +16,7 @@
 
     </section>
 
-    <section class="">
+    <section class="description-section">
         <h2>Omschrijving</h2>
         <ul class="">
             <li><%= list.description %></li>
@@ -35,7 +35,7 @@
                              alt="image house">
                     </li>
                     <li class="child_li_house_card">
-                        <a href="../Detailpage/<%= house.id %>" class=""><%= house.f_houses_id.street %>
+                        <a href="../Detailpage/<%= house.id %>" class="linkt_house"><%= house.f_houses_id.street %>
                             <%= house.f_houses_id.house_nr %><%= house.f_houses_id.house_nr_addition %>
                         </a>
                     </li>
