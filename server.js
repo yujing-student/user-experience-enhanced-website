@@ -37,6 +37,7 @@ app.get('/', async function (request, response) {
             // console.log(JSON.stringify(favorite_houses.data[1].houses[1].f_houses_id.poster_image));
 
             // 2 nested arrays
+
             const housedetails = favorite_houses.data.map(listItem => ({
                 id: listItem.id,
                 title: listItem.title,
@@ -46,6 +47,7 @@ app.get('/', async function (request, response) {
                     image: house.f_houses_id.poster_image
                 }))
             }));
+            console.log(JSON.stringify(housedetails))
 
             response.render('index', {lists: housedetails});
         } else {
@@ -111,12 +113,13 @@ const message_score_page_data = [];
 
 app.get('/score/:id', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`).then(async ({ data }) => {
-        // Pas de url naar de afbeelding aan zodat die verwijst naar directus
-        data.picture = `https://fdnd-agency.directus.app/assets/${data.poster_image}`
-        data.poster_image.length = Number(data.length).toFixed(2)
-        data.poster_image.width = Number(data.width).toFixed(2)
+    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*,image.id,image.height,image.width`)
+        .then(async ({ data }) => {
 
+
+        // Pas de url naar de afbeelding aan zodat die verwijst naar directus
+
+console.log(data)
 
         // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
         response.render('score', {
@@ -128,7 +131,8 @@ app.get('/score/:id', function (request, response) {
             prijs: prijs,
             ligging: ligging,
             oppervlakte: oppervlakte,
-            notities: message_score_page_data,
+            notities: message_score_page_data
+
 
         })
     })
