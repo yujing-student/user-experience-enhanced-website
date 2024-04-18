@@ -34,9 +34,10 @@
             <article class="houses">
                 <ul class="image_house_data">
                     <li>
-                        <img class="image_size" width="200px
-"
-                             src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image %>"
+                        <img class="image_size"
+                             src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>"
+                             width="<%= house.f_houses_id.poster_image.width %>"
+                             height="<%= house.f_houses_id.poster_image.height %>"
                              alt="image house">
                     </li>
                     <li class="child_li_house_card">

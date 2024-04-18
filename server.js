@@ -1,6 +1,5 @@
 // Importeer het npm pakket express uit de node_modules map
 import express, {json} from 'express'
-const { get } = import('http');
 // Importeer de zelfgemaakte functie fetchJson uit de ./helpers map
 import fetchJson from './helpers/fetch-json.js'
 
@@ -9,13 +8,9 @@ import fetchJson from './helpers/fetch-json.js'
 const app = express()
 
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
-const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*`)
+const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
 const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
 // baseurl gebruiken werkt niet dan word er niks geladen
-
-
-const messages = []//dit is voor de detailpage
-
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
@@ -47,7 +42,7 @@ app.get('/', async function (request, response) {
                     image: house.f_houses_id.poster_image
                 }))
             }));
-            console.log(JSON.stringify(housedetails))
+            // console.log(JSON.stringify(housedetails))
 
             response.render('index', {lists: housedetails});
         } else {
@@ -62,7 +57,7 @@ app.get('/lijsten/:id', async function (request, response) {
     const listId = request.params.id;
     // console.log('Fetching data for list ID:', listId);
 
-    const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/${request.params.id}?fields=*.*.*`)
+    const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/${request.params.id}?fields=*.*.*.*`)
 
 
     try {
@@ -117,25 +112,25 @@ app.get('/score/:id', function (request, response) {
         .then(async ({ data }) => {
 
 
-        // Pas de url naar de afbeelding aan zodat die verwijst naar directus
+            // Pas de url naar de afbeelding aan zodat die verwijst naar directus
 
 // console.log(data)
 
-        // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-        response.render('score', {
-            house: data,
-            algemeen: algemeen,
-            keuken: keuken,
-            badkamer: badkamer,
-            tuin: tuin,
-            prijs: prijs,
-            ligging: ligging,
-            oppervlakte: oppervlakte,
-            notities: message_score_page_data
+            // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
+            response.render('score', {
+                house: data,
+                algemeen: algemeen,
+                keuken: keuken,
+                badkamer: badkamer,
+                tuin: tuin,
+                prijs: prijs,
+                ligging: ligging,
+                oppervlakte: oppervlakte,
+                notities: message_score_page_data
 
 
+            })
         })
-    })
 })
 
 

@@ -1,4 +1,7 @@
-
+.image_house_score{
+    max-width: 100%;
+    height: auto;
+}
 .house_details{
     margin-top: 2em;
     background-color: #e6f2f7;
