@@ -167,19 +167,12 @@ app.post('/score/:id', async function (request, response) {
             console.log(request.body.badkamerNumber)
 
 
-            //     hier pas je de data aan
-            fetch('https://fdnd-agency.directus.app/items/f_houses/' + request.params.id, {
-                method: 'post',
-                body: JSON.stringify({
-                    custom: apiResponse.data.custom
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8'
-                }
-            }).then((patchResponse) => {
-                // Redirect naar de persoon pagina
+
+            if (request.body.enhanced) {
+                response.render('partials/showScore', {result: apiResponse})
+            } else {
                 response.redirect(303, '/score/' + request.params.id)
-            })
+            }
 
         })
 })

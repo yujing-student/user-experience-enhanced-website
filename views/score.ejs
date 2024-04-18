@@ -68,7 +68,10 @@
 
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
-            <%- include('./partials/showScore', {result: house}); %>
+            <div>
+
+                <%- include('partials/showScore', {result: house}); %>
+            </div>
         </section>
 
 
@@ -91,14 +94,18 @@
             <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
 
             <h2 class="">Jan</h2>
-            <%- include('./partials/showScore', {result: house}); %>
+
+
+            <div>
+                <%- include('partials/showScore', {result: house}); %>
+            </div>
 
         </section>
         <section class="users_score_rating second_user">
             <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
 
             <h2 class="">Piet</h2>
-            <%- include('./partials/showScore', {result: house}); %>
+            <%- include('partials/showScore', {result: house}); %>
 
         </section>
     </div>
