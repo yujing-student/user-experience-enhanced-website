@@ -119,7 +119,7 @@ app.get('/score/:id', function (request, response) {
 
         // Pas de url naar de afbeelding aan zodat die verwijst naar directus
 
-console.log(data)
+// console.log(data)
 
         // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
         response.render('score', {
