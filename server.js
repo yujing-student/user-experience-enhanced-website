@@ -164,7 +164,16 @@ app.post('/score/:id', async function (request, response) {
 
 
             if (request.body.enhanced) {
-                response.render('partials/showScore', {result: apiResponse})
+                response.render('partials/showScore', {result: apiResponse,
+
+                    algemeen: algemeen,
+                    keuken: keuken,
+                    badkamer: badkamer,
+                    tuin: tuin,
+                    prijs: prijs,
+                    ligging: ligging,
+                    oppervlakte: oppervlakte,
+                    notities: message_score_page_data})
             } else {
                 response.redirect(303, '/score/' + request.params.id)
             }

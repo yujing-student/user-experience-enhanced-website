@@ -70,8 +70,10 @@
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
             <div class="output_other_users">
+                <% algemeen.forEach(function(house) { %>
+                    <%- include('partials/showScore', {result: house, url: "house"}); %>
+                <% }) %>
 
-                <%- include('partials/showScore', {result: house}); %>
             </div>
         </section>
 
