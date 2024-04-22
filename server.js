@@ -9,8 +9,11 @@ const app = express()
 
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
+const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*.*.*`)
 const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
 // baseurl gebruiken werkt niet dan word er niks geladen
+
+console.log(JSON.stringify(feedback.data))
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
@@ -32,15 +35,19 @@ app.get('/', async function (request, response) {
             // console.log(JSON.stringify(favorite_houses.data[1].houses[1].f_houses_id.poster_image));
 
             // 2 nested arrays
+            console.log(JSON.stringify(favorite_houses.data))
 
             const housedetails = favorite_houses.data.map(listItem => ({
+
                 id: listItem.id,
                 title: listItem.title,
                 // houses arrya is de nummers van die huizen en de inhoud daarvan
                 houses_array: listItem.houses.map(house => ({
                     id: house.id,
                     image: house.f_houses_id.poster_image
+
                 }))
+
             }));
             // console.log(JSON.stringify(housedetails))
 
@@ -163,6 +170,7 @@ app.post('/score/:id', async function (request, response) {
 
 
 
+            const text_succes = 'uw huis is toegevoegd'
             if (request.body.enhanced) {
                 response.render('partials/showScore', {result: apiResponse,
 
@@ -173,7 +181,11 @@ app.post('/score/:id', async function (request, response) {
                     prijs: prijs,
                     ligging: ligging,
                     oppervlakte: oppervlakte,
-                    notities: message_score_page_data})
+                    notities: message_score_page_data,
+                    text_succes: text_succes
+                //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
+                }
+                )
             } else {
                 response.redirect(303, '/score/' + request.params.id)
             }

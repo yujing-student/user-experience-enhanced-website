@@ -1,8 +1,8 @@
 // Selecteer alle bestelformulieren
-let forms = document.querySelectorAll('form.inputfields')
+let form_numbers_score = document.querySelectorAll('form.inputfields')
 
 // Loop door al die formulieren
-forms.forEach(function(form) {
+form_numbers_score.forEach(function(form) {
 
     // Luister naar het submit event
     form.addEventListener('submit', function(event) {
