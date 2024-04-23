@@ -367,13 +367,13 @@ header {
 .gridcontainer_div_section{
     display: grid;
     /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-    grid-template-columns:repeat(auto-fit,30em);
+    grid-template-columns:repeat(auto-fit,20em);
 }
 .section_score_field_numbers,.text_input_notes,.show_score_house,.input_notes,.li_users{
     background-color: #e6f2f7;
     margin-bottom: 2em;
     padding: 1em;
-    margin-right: 3em;
+    margin-right: 4em;
 }
 .show_score_house__output_number{
     padding: 0;
@@ -400,6 +400,16 @@ header {
     display: flex;
     flex-direction: column;
 }
+
+.score_others_grid_container_title{
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+    grid-template-columns: repeat(auto-fit, 20em);
+    padding: 0;
+    margin-left: 0;
+
+}
+
 @media (width >= 570px) {
 
     .inputfields{
@@ -407,6 +417,7 @@ header {
     }
     .score_others_grid_container{
         display: grid;
+
     }
     .grid-container{
         display: grid;
@@ -427,13 +438,6 @@ header {
 @media (width >= 980px) {
 
 
-
-    .score_others_grid_container_title{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        padding: 0;
-
-    }
 
 }
 
