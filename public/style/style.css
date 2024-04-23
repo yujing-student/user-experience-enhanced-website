@@ -1,6 +1,6 @@
 @font-face {
     font-family: "proximanova";
-    src: url("/public/assets/font/ProximaNova-Regular_2607783814.otf");
+    src: url("/assets/font/ProximaNova-Regular_2607783814.otf");
 }
 
 html {
@@ -47,67 +47,106 @@ main {
     padding: 0 1em 1em 2em;
 }
 
-
-/*dit is alleen de index*/
-.title_description{
-    border-bottom:  solid var(--gray);
-    margin-bottom: 1em;
-
-}
-.favorite-section-search {
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: 1fr;
-    grid-row-gap: 1em;
-
-    font-size: 1.15em;
+/*navigaation*/
+header {
+    position: relative;
+    color: var(--black);
 }
 
-.search-tekst, .styling-searchbutton {
-    font-size: 1.1em;
+.menu_nav {
+    background-color: var(--orange
+    );
+    display: flex;
+}
+
+.menu-nav_ul {
+    /*display: none;*/
+    padding-left: 4em;
+}
+
+.menu-nav_ul_li {
+    margin-top: 1.8em;
+}
+
+.menu-nav_ul_li_link {
+    color: var(--black);
+    text-decoration: none;
+}
+.link-to-list-nav{
+    color: var(--black);
+}
+
+.menu_nav_ul_li_button-login-icon {
+    margin-top: -0.5em;
+}
+
+.menu_nav_hamburger-icon {
+
+    background-color: var(--orange);
+    margin-top: 2em;
+    display: flex;
+
+
     border: none;
 }
 
-.search-text {
-    font-size: 1.16em;
+@media only screen and (min-width: 650px) {
+
+    .menu-nav_ul {
+        display: flex;
+        row-gap: 1em;
+        flex-direction: row;
+        column-gap: 1em;
+
+    }
+
+    .menu_nav_hamburger-icon {
+        display: none;
+    }
+
+
 }
 
-.input-search {
-    font-size: 0.9em;
+@media only screen and (min-width: 700px) {
+    .menu-nav_ul {
+        column-gap: 2em;
+        padding-left: 3em;
+        margin-top: 1em;
+
+    }
 }
 
-.input-search:focus {
-    background-color: var(--orange);
+/*gedeelde lijsten dus index*/
+.main-section-title_description {
+    border-bottom: solid var(--gray);
+    margin-bottom: 1em;
+
 }
 
-.styling-searchbutton {
-    background-color: var(--orange);
-    grid-row: 3;
-}
-option:focus-visible{
-    background-color: var(--orange);
-}
-
-#filters {
-    max-width: 10em;
-}
-
-.grid-house-lists{
+.main-div-grid-house-lists {
     display: grid;
     gap: 3.5em;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
 }
-.names-of-houses {
+
+.main-div-article {
+    border: solid var(--gray);
+}
+
+.main-div-article-ol_names-of-houses {
     display: grid;
     grid-row-gap: 0.8em;
     /*margin-left: 1em;*/
     padding: 0;
-    border: solid #dddddd;
+    margin-top: 0;
+    /*border: solid #dddddd;*/
 
 }
-.image_house_icon{
+
+.main-div-article-ol-li-a_image_house_icon {
     /*margin-left: -2em;*/
+
 
     max-width: 100%;
     height: auto;
@@ -115,59 +154,57 @@ option:focus-visible{
 
 }
 
-.position_items_text{
+.position_items_text {
     margin-left: 2em;
+    height: 1.5em;
+
 }
 
-.user-profiles {
-    width: 170px;
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+.link-to-list {
+    color: var(--black);
 }
-.button-got-list{
+.link-to-list:hover {
+
+    text-decoration: underline;
+}
+/*.list_houes_grid_ul_li__button-go_to_house:hover{*/
+/*    background-color: var(--blue);*/
+/*    color: var(--white);*/
+
+/* }*/
+.list_houes_grid_ul_li__button-go_to_house:active{
+    transform: translateY(3px);  /* Move the button down slightly */
+    animation: bounce 0.8s ease-in-out 1;
+}
+@keyframes list_houes_grid_ul_li__button-go_to_house {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }  /* Move the button up a bit */
+    100% { transform: translateY(0); }  /* Return to original position */
+}
+
+
+
+.button-got-list {
     width: 7em;
-    background-color: #F7A100;
+    background-color: var(--orange);
     border: none;
     font-size: 1.3em;
-    color: black;
+    color: var(--black);
     margin-left: 1.3em;
     margin-bottom: 1em;
 
 }
-.link-to-house {
-    font-size: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--blue);
-
-}
-
-.link-to-house {
-    font-weight: 300;
-    font-size: 1.1em;
-}
-
-.link-to-house:hover {
-    color: var(--orange);
-}
-
-
-.border-top:not(:first-child) {
-    /*margin-top: 1em;*/
-}
-
 
 @media (width >= 400px) {
 
 
-    .grid-house-lists{
+    .main-div-grid-house-lists {
         display: grid;
         gap: 3.5em;
         grid-template-columns: repeat(auto-fit, 18em);
     }
 
-    .button-got-list{
+    .button-got-list {
         width: 10em;
         font-size: 1.5em;
 
@@ -177,45 +214,236 @@ option:focus-visible{
 }
 
 
-
 @media (width >= 600px) {
 
-    .names-of-houses {
+    .main-div-article-ol_names-of-houses {
         /*margin-left: 0.5em;*/
         max-width: 86em;
+
         /*padding: 0.5em;*/
         /*margin: 1em 2em 2em 2em ;*/
         /*height: 30em;*/
 
     }
-    /*article{*/
-    /*    width: 21em;*/
-    /*}*/
 
 
-    .grid-house-lists{
+    .main-div-grid-house-lists {
         display: grid;
         gap: 3.5em;
-        grid-template-columns: repeat(auto-fit,23em);
+        grid-template-columns: repeat(auto-fit, 23em);
         margin-top: 2em;
-
-    }
-    .height-li-items{
-        /*height: 1em;*/
-        /*height: 3em;*/
-
-    }
-    .height-li-items-omschrijving{
-        height: 5em;
-    }
-
-    .height-li-items-title{
-        height: 1.5em;
-
-    }
-    .omschrijving_li_items{
 
     }
 
 
 }
+
+/*lijsten page*/
+
+.grid-container{
+    border-top: solid var(--gray);
+    margin-top: 2em;
+    padding-top: 1em;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+
+    /*width: 200px;  !* Set desired width *!*/
+    /*height: 200px;  !* Set desired height *!*/
+    overflow: hidden;  /* Hide any overflowing parts */
+}
+.show_avatars{
+    height: auto;
+    max-width: 100%;
+    width: 200px;
+}
+.description-section{
+    margin-top: 4em;
+    border-bottom: solid var(--gray);
+}
+.description-section__ul{
+    padding: 0;
+}
+.list_houses_grid{
+    display: grid;
+    gap: 3.5em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.list_houses_grid__article {
+    display: flex;
+}
+.list_houses_grid_ul__image_house_data {
+    display: grid;
+    grid-row-gap: 0.5em;
+    line-height: 1.5;
+    padding: 0;
+    border: solid var(--gray);
+}
+.list_houses_grid__mage_size_lijst {
+    max-width: 100%;
+    height: 200px;
+    /*with auto all images are than different and that is not good*/
+    /*object-fit: cover;*/
+}
+.list_houses_grid__li{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.list_houses_grid_ul_li_a__linkt_house{
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 1.1em;
+}
+.list_houes_grid_ul_li__button-go_to_house{
+    width: 8em;
+    background-color: var(--orange);
+    border: none;
+    font-size: 1.3em;
+    color: var(--black);
+    margin-left: 1.3em;
+    margin-bottom: 1em;
+
+}
+
+
+
+@media (width >= 400px) {
+
+    .list_houses_grid{
+        display: grid;
+        gap: 3.5em;
+        grid-template-columns: repeat(auto-fit, 23em);
+        /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+        margin-top: 2em;
+    }
+    .list_houes_grid_ul_li__button-go_to_house{
+        font-size: 1.5em;
+    }
+
+}
+
+@media (width >= 570px) {
+
+
+    .grid-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+        /*grid-template-rows:15em 1fr;*/
+
+
+    }
+    .grid-item{
+        width: 13em;
+
+    }
+
+
+
+
+}
+
+/*todo de images de avatar ophalen van de gebruikers*/
+
+/*score pagina*/
+.section_house_details{
+    margin-top: 2em;
+    background-color: #e6f2f7;
+    padding: 1em;
+    max-width: 61em;
+}
+
+.house_details_img__image_house_score{
+    max-width: 100%;
+    height: auto;
+}
+.gridcontainer_div_section{
+    display: grid;
+    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+    grid-template-columns:repeat(auto-fit,30em);
+}
+.section_score_field_numbers,.text_input_notes,.show_score_house,.input_notes,.li_users{
+    background-color: #e6f2f7;
+    margin-bottom: 2em;
+    padding: 1em;
+    margin-right: 3em;
+}
+.show_score_house__output_number{
+    padding: 0;
+}
+
+
+.inputfields{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+.label-inputfield{
+    display: grid;
+    grid-template-columns: 6em 8em;
+}
+.button-notes{
+    background-color: var(--orange);
+    border: none;
+    font-size: 1em;
+    width: 10em;
+}
+
+.text-input-notes-form{
+    display: flex;
+    flex-direction: column;
+}
+@media (width >= 570px) {
+
+    .inputfields{
+        grid-template-columns: 17em;
+    }
+    .score_others_grid_container{
+        display: grid;
+    }
+    .grid-container{
+        display: grid;
+        grid-template-columns:repeat(auto-fit,20em);
+        /*grid-template-rows:15em 1fr;*/
+
+
+    }
+    .grid-item{
+
+    }
+
+
+
+
+}
+
+@media (width >= 980px) {
+
+
+
+    .score_others_grid_container_title{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        padding: 0;
+
+    }
+
+}
+
+@media (width >= 1200px) {
+
+
+
+    .inputfields{
+        grid-template-columns: 17em;
+    }
+
+}
+/*todo de score pagina onnodige css weghalen en aanpassen naar database*/

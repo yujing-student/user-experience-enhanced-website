@@ -9,11 +9,25 @@ const app = express()
 
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
-const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*.*.*`)
+const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
+const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?fields=*.*.`)
 const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
 // baseurl gebruiken werkt niet dan word er niks geladen
 
-console.log(JSON.stringify(feedback.data))
+const feedback_users = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback`)
+const houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/1?fields=*.*.*`)
+
+
+
+
+// console.log(JSON.stringify(feedbackdetails.data));
+//
+// console.log(JSON.stringify(feedbackdetails.data));
+// console.log(JSON.stringify(houses.data));
+// console.log(JSON.stringify(users.data));
+// console.log(JSON.stringify(feedback.data));
+console.log(JSON.stringify(feedback.data[0].rating));
+
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
@@ -66,12 +80,20 @@ app.get('/lijsten/:id', async function (request, response) {
 
     const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/${request.params.id}?fields=*.*.*.*`)
 
+    const users_image = users.data.map(avatar => {
+        console.log(avatar.avatar.id);
+        return {
+            id_avatar: avatar.avatar.id,
+            width: avatar.avatar.width,
+            height: avatar.avatar.height,
 
+        };
+    });
     try {
         response.render('lijst.ejs',
             {
                 list: apiData.data,
-                houses: apiData.data.houses
+                users:users_image
             });
 
 
@@ -80,27 +102,6 @@ app.get('/lijsten/:id', async function (request, response) {
     }
 });
 
-app.get('/Detailpage/:id', async function (request, response) {
-
-
-
-    const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}?fields=*.*.*`)
-    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
-    try {
-        // request.params.id gebruik je zodat je de exacte student kan weergeven dit is
-        // een routeparmater naar de route van die  specifieke persoon
-
-        // console.log(JSON.stringify(favorite_houses.data));
-        response.render('Detailpage', {
-            house: apiData.data,
-            images: favorite_houses.data
-
-        });
-    }
-    catch (error){
-        console.error('Error fetching house data:', error);
-    }
-});
 
 const algemeen = []
 const keuken = []
@@ -112,7 +113,16 @@ const oppervlakte = []
 const message_score_page_data = [];
 
 
+const users_image = users.data.map(avatar => {
+    console.log(avatar.avatar.id);
+    return {
+        id_avatar: avatar.avatar.id,
+        width: avatar.avatar.width,
+        height: avatar.avatar.height,
+        name:avatar.name
 
+    };
+});
 app.get('/score/:id', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*,image.id,image.height,image.width`)
@@ -133,7 +143,8 @@ app.get('/score/:id', function (request, response) {
                 prijs: prijs,
                 ligging: ligging,
                 oppervlakte: oppervlakte,
-                notities: message_score_page_data
+                notities: message_score_page_data,
+                users:users_image
 
 
             })
@@ -145,7 +156,7 @@ app.post('/score/:id', async function (request, response) {
     const listId = request.params.id;
 
     // ophalen van de data en opslaan in een const
-    const message_score_page = request.body.test;
+    const message_score_page = request.body.notes_shown;
     const algemeenNumber = request.body.algemeenNumber;
     const keukenNumber = request.body.keukenNumber;
     const badkamerNumber = request.body.badkamerNumber;
@@ -158,6 +169,8 @@ app.post('/score/:id', async function (request, response) {
     tuin.push(tuinNumber);
     message_score_page_data.push(message_score_page);
 
+
+
     // hier haal je de nieuwe data op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
         .then(async (apiResponse) => {
@@ -167,6 +180,7 @@ app.post('/score/:id', async function (request, response) {
             console.log(request.body.algemeenNumber)
             console.log(request.body.keukenNumber)
             console.log(request.body.badkamerNumber)
+            console.log(request.body.notes_shown)
 
 
 
@@ -174,23 +188,74 @@ app.post('/score/:id', async function (request, response) {
             if (request.body.enhanced) {
                 response.render('partials/showScore', {result: apiResponse,
 
-                    algemeen: algemeen,
-                    keuken: keuken,
-                    badkamer: badkamer,
-                    tuin: tuin,
-                    prijs: prijs,
-                    ligging: ligging,
-                    oppervlakte: oppervlakte,
-                    notities: message_score_page_data,
-                    text_succes: text_succes
-                //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
-                }
+                        algemeen: algemeen,
+                        keuken: keuken,
+                        badkamer: badkamer,
+                        tuin: tuin,
+                        prijs: prijs,
+                        ligging: ligging,
+                        oppervlakte: oppervlakte,
+                        notities: message_score_page_data,
+                        text_succes: text_succes,
+                        usres:users_image
+
+                        //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
+                    }
                 )
             } else {
                 response.redirect(303, '/score/' + request.params.id)
             }
 
         })
+})
+
+app.get('/database/:id', function (request, response) {
+    // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+
+
+    const feedbackdetails = feedback.data.map((listItem) => {
+        console.log(listItem);
+        return {
+            id: listItem.id,
+            ligging: listItem.rating.ligging,
+            ov: listItem.rating.ov,
+            type: listItem.rating.type,
+            user: listItem.user,
+        };
+    });
+    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*.*`)
+        .then(async ({ data }) => {
+
+            // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
+            response.render('database', {
+                house: data,
+                notities: message_score_page_data,
+                feedback:feedbackdetails
+            })
+        })
+})
+app.post('/database/:id', function (request, response) {
+    // Stap 1: Haal de huidige data op, zodat we altijd up-to-date zijn, en niks weggooien van anderen
+
+    // Haal eerst de huidige gegevens voor dit board op, uit de WHOIS API
+    fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`).then(({ data }) => {
+        // Stap 2: Sla de nieuwe data op in de API
+        // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
+        fetch(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*`, {
+            method: 'PATCH',
+
+            // eerst moet uitgezoecht worden welk huis dit is en als je dat weet dan pas kan je wat doen vervolgens zit je nog met een geneste array met weer een object en arrays in dat object
+            body: JSON.stringify({
+                likes: data.likes + 1,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then((patchResponse) => {
+            // Redirect naar de persoon pagina
+            response.redirect(303, '/database/' + request.params.id)
+        })
+    })
 })
 
 

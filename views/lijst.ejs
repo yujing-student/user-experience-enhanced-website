@@ -3,26 +3,28 @@
 <main>
 
 
-    <section class="users_section">
+    <section class="">
         <h2>Gebruikers</h2>
         <p>Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
-        <div class="div_images_users">
-            <img src="../assets/images/user_profile.png" class="" alt="user" width="200px
-">
-            <img src="../assets/images/user_profile.png" class="" alt="user" width="200px
-">
-            <img src="../assets/images/user_profile.png" class="" alt="user" width="200px
-">
-            <img src="../assets/images/user_profile.png" class="" alt="user" width="200px
-">
 
-        </div>
+            <ul class="grid-container">
+                <li class="grid-item">
+                    <% users.forEach(users => { %>
+                        <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
+                             alt="House Image" width="<%= users.width %>"
+                             height=" <%= users.height %>" class="show_avatars"
+                        >
+                </li>
+
+                <% }) %>
+            </ul>
+
 
     </section>
 
     <section class="description-section">
         <h2>Omschrijving</h2>
-        <ul class="">
+        <ul class="description-section__ul">
             <li><%= list.description %></li>
         </ul>
     </section>
@@ -31,27 +33,28 @@
 
         <% list.houses.forEach(house => { %>
 
-            <article class="houses">
-                <ul class="image_house_data">
+            <article class="list_houses_grid__article">
+                <ul class="list_houses_grid_ul__image_house_data">
                     <li>
-                        <img class="image_size"
+                        <img class="list_houses_grid__mage_size_lijst"
                              src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>"
                              width="<%= house.f_houses_id.poster_image.width %>"
                              height="<%= house.f_houses_id.poster_image.height %>"
                              alt="image house">
                     </li>
-                    <li class="child_li_house_card">
-                        <a href="../Detailpage/<%= house.id %>" class="linkt_house"><%= house.f_houses_id.street %>
+                    <li class="list_houses_grid__li">
+                        <a href="../Detailpage/<%= house.id %>" class="list_houses_grid_ul_li_a__linkt_house"
+                           aria-label="ga naar dit huis"><%= house.f_houses_id.street %>
                             <%= house.f_houses_id.house_nr %><%= house.f_houses_id.house_nr_addition %>
                         </a>
                     </li>
 
-                    <li class="child_li_house_card"><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></li>
-                    <li class="child_li_house_card price_li">€<%= house.f_houses_id.price %></li>
-                    <li class=" child_li_house_card"><%= house.f_houses_id.agent %></li>
+                    <li class="list_houses_grid__li"><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></li>
+                    <li class="list_houses_grid__li">€<%= house.f_houses_id.price %></li>
+                    <li class=" list_houses_grid__li"><%= house.f_houses_id.agent %></li>
                     <li class="">
-                        <button class="button-go_to_house">
-                            <a class="special_link" href="../score/<%= house.f_houses_id.id %>">Bekijk de score
+                        <button class="list_houes_grid_ul_li__button-go_to_house">
+                            <a class="link-to-list" href="../score/<%= house.f_houses_id.id %>">Bekijk de score
                             </a>
                         </button>
 

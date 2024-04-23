@@ -6,15 +6,19 @@
         <h1>score</h1>
         <p>Hier kunt u een score geven over het huis.</p>
 
-        <ul class="house_details">
+        <ul class="section_house_details">
 
             <% if (house.poster_image) { %>
-                <img src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>"
+            <li>
+
+
+                <img src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>" loading="lazy"
                      width="<%= house.poster_image.width %>"
                      height="<%= house.poster_image.height %>"
-                     class="image_house_score"
+                     class="house_details_img__image_house_score"
                      alt="image-house">
             <% } %>
+            </li>
             <li class=""><%= house.street %> <%= house.house_nr %> </li>
             <li class=""><%= house.city %> <%= house.postal_code %></li>
 
@@ -24,16 +28,17 @@
     </section>
 
 
-    <div class="">
-        <section class="score_field_numbers">
+    <div class="gridcontainer_div_section">
+        <section class="section_score_field_numbers">
 
 
             <h2>score</h2>
             <p>Geef een score over het huis van 0 tot en met 10.</p>
 
 
-            <form method="POST" action="/score/<%= house.id %>" class="inputfields">
-                <input type="hidden" value="<%= house.id %>">
+            <form method="POST" action="/score/<%= house.id %>" class="inputfields like" >
+                <input type="hidden" value="<%= house.id %>" name="actie" >
+<!--                inputfields niet aanpassen vanwege de client side javascript-->
 
 
                 <label for="algemeen" class="label-inputfield"><span>algemeen:</span>
@@ -50,29 +55,29 @@
                 <label for="tuin" class="label-inputfield"><span>tuin:</span>
                     <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0">
                 </label>
-                <button type="submit" class="submit- button_notes notes">Opslaan</button>
+                <button type="submit" class="button-notes likes">Opslaan</button>
 
             </form>
         </section>
         <section class="text_input_notes">
             <h2 class="">Notities</h2>
             <p>Hier kunt u een notitie achterlaten.</p>
-            <form method="POST" action="/score/<%= house.id %>" class="chatbox">
+            <form method="POST" action="/score/<%= house.id %>" class="text-input-notes-form">
                 <input type="hidden" value="<%= house.id %>">
-                <label for="bericht">
-                    <textarea id="test" name="test"></textarea>
+                <label for="bericht" aria-label="laat uw noitite achter">
+                    <textarea id="note-area" name="notes_shown"></textarea>
                 </label>
-                <button type="submit" class="">Opslaan</button>
+                <button type="submit" class="button-notes">Opslaan</button>
 
             </form>
         </section>
 
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
-            <div class="output_other_users">
-                <% algemeen.forEach(function(house) { %>
+
+            <div class=" show_score_house__output_number">
+<!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
                     <%- include('partials/showScore', {result: house, url: "house"}); %>
-                <% }) %>
 
             </div>
         </section>
@@ -80,9 +85,9 @@
 
         <section class="input_notes">
             <h2 class="notes_h2">Uw notities</h2>
-            <ul class="output_other_users">
+            <ul class="show_notes">
                 <% notities.forEach(message =>{ %>
-                    <li class="house_details_text"><%= message %></li>
+                    <li class=""><%= message %></li>
                 <% }) %>
             </ul>
         </section>
@@ -91,29 +96,27 @@
 
 
     <div class="score_others_grid_container">
-        <h2 class="title">Bekijk de beoordelingen van anderen</h2>
-        <section class="users_score_rating first_user">
+        <h2 class="">Bekijk de beoordelingen van anderen</h2>
+        <section class=" ">
+            <ul class="score_others_grid_container_title">
+                <% users.forEach(users => { %>
+                <li class="li_users">
+                    <h2><%= users.name %></h2>
 
-            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
+                    <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
+                         alt="House Image" width="<%= users.width %>"
+                         height=" <%= users.height %>" class="show_avatars"
+                    >
+                    <ul class="show_score_house__output_number">
 
-            <h2 class="">Jan</h2>
+                        <%- include('partials/showScore', {result: house}); -%>
 
+                    </ul>
+                </li>
+                    <% }) %>
 
-            <div class="output_other_users">
+            </ul>
 
-                <%- include('partials/showScore', {result: house}); %>
-
-            </div>
-
-        </section>
-        <section class="users_score_rating second_user">
-            <p> <img src="../assets/images/user_profile.png" class="" alt="user" width="200px"></p>
-
-            <h2 class="">Piet</h2>
-            <div class="output_other_users">
-
-                <%- include('partials/showScore', {result: house}); %>
-            </div>
 
         </section>
     </div>

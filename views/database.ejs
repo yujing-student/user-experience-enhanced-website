@@ -1,0 +1,36 @@
+<%- include('./partials/head') %>
+
+<main>
+    <section class="input_notes">
+        <h2 class="notes_h2">Uw notities</h2>
+        <ul class="show_notes">
+            <% feedback.forEach(message =>{ %>
+                <li class=""><%= message.id %></li>
+                <li class=""><%= message.ligging %></li>
+                <li class=""><%= message.ov %></li>
+                <li class=""><%= message.user %></li>
+
+
+        </ul>
+        <form method="PATCH" action="/score/<%= house.id %>" class="inputfields like" >
+            <input type="hidden" value="<%= house.id %>" name="actie" >
+            <!--                inputfields niet aanpassen vanwege de client side javascript-->
+
+
+            <label for="algemeen" class="label-inputfield"><span>ligging:</span>
+                <input type="number" id="algemeen" name="algemeenNumber" value="<%= message.ligging %>"
+                       placeholder="0">
+            </label>
+            <label for="keuken" class="label-inputfield"><span>keuken:</span>
+                <input type="number" id="keuken" name="keukenNumber" value="<%= message.ov %>">
+            </label>
+            <label for="Badkamer" class="label-inputfield"><span>type:</span>
+                <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.type %>">
+            </label>
+            <button type="submit" class="button-notes likes">Opslaan</button>
+
+        </form>
+
+        <% }) %>
+    </section>
+</main>
