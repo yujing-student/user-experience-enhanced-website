@@ -49,7 +49,7 @@ app.get('/', async function (request, response) {
             // console.log(JSON.stringify(favorite_houses.data[1].houses[1].f_houses_id.poster_image));
 
             // 2 nested arrays
-            console.log(JSON.stringify(favorite_houses.data))
+            // console.log(JSON.stringify(favorite_houses.data))
 
             const housedetails = favorite_houses.data.map(listItem => ({
 
