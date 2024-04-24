@@ -10,10 +10,17 @@
             <ul class="grid-container">
                 <li class="grid-item">
                     <% users.forEach(users => { %>
-                        <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
+                    <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=avif" type="image/avif">
+
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar%>?width=600&height=400&fit=cover&format=webp" type="image/webp">
+
+
+                        <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover"
                              alt="House Image" width="<%= users.width %>"
                              height=" <%= users.height %>" class="show_avatars"
                         >
+                    </picture>
                 </li>
 
                 <% }) %>

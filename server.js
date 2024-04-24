@@ -103,6 +103,7 @@ app.get('/lijsten/:id', async function (request, response) {
 });
 
 
+
 const algemeen = []
 const keuken = []
 const badkamer = []
@@ -111,7 +112,6 @@ const prijs = []
 const ligging = []
 const oppervlakte = []
 const message_score_page_data = [];
-
 
 const users_image = users.data.map(avatar => {
     console.log(avatar.avatar.id);
@@ -246,7 +246,10 @@ app.post('/database/:id', function (request, response) {
 
             // eerst moet uitgezoecht worden welk huis dit is en als je dat weet dan pas kan je wat doen vervolgens zit je nog met een geneste array met weer een object en arrays in dat object
             body: JSON.stringify({
-                likes: data.likes + 1,
+                rating: {
+                    algemeen,
+                    badkamer
+                },
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
