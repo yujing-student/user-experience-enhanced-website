@@ -1,34 +1,34 @@
 <ul class="output_other_users">
     <% if (algemeen.length > 0) { %>
         <% algemeen.forEach(number =>{ %>
-            <li class="house_details_text"> algemeen: <%= number %></li>
+            <li class="show_notes__user"> algemeen: <%= number %></li>
         <% }) %>
     <% } else { %>
-        <li class="house_details_text">U hebt nog geen score op gegeven</li>
+        <li class="show_notes__user">U hebt nog geen score op gegeven</li>
     <% } %>
 
     <% if (keuken.length > 0) { %>
         <% keuken.forEach(kitchen_number =>{ %>
-            <li class="house_details_text"> keuken: <%= kitchen_number %></li>
+            <li class="show_notes__user"> keuken: <%= kitchen_number %></li>
         <% }) %>
     <% } else { %>
-        <li class="house_details_text">  </li>
+        <li class="show_notes__user">  </li>
     <% } %>
 
     <% if (badkamer.length > 0) { %>
         <% badkamer.forEach(kitchen_number =>{ %>
-            <li class="house_details_text"> Badkamer: <%= kitchen_number %></li>
+            <li class="show_notes__user"> Badkamer: <%= kitchen_number %></li>
         <% }) %>
     <% } else { %>
-        <li class="house_details_text"> </li>
+        <li class="show_notes__user"> </li>
     <% } %>
 
     <% if (tuin.length > 0) { %>
         <% tuin.forEach(kitchen_number =>{ %>
-            <li class="house_details_text"> tuin: <%= kitchen_number %></li>
+            <li class="show_notes__user"> tuin: <%= kitchen_number %></li>
         <% }) %>
     <% } else { %>
-        <li class="house_details_text"></li>
+        <li class="show_notes__user"></li>
     <% } %>
 </ul>
 

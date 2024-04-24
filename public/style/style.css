@@ -48,6 +48,28 @@ main {
     padding: 0 1em 1em 2em;
 }
 
+/*meerdere keren gebruikt op verschillende pagina*/
+.title_page {
+    font-size: 2em;
+    line-height: 1.5em;
+}
+
+.hr_bottom {
+    border-bottom: solid var(--gray);
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+}
+
+.article_link-to-list, .form_inputfields__save_buton, .article_houses__button:hover {
+
+    text-decoration: underline;
+}
+
+.list_houes_grid__button, .form_inputfields__save_buton, .article_houses__button:active {
+    transform: translateY(3px);
+    animation: bounce 0.8s ease-in-out 1;
+}
+
 /*navigaation*/
 header {
     position: relative;
@@ -73,26 +95,280 @@ header {
     color: var(--black);
     text-decoration: none;
 }
-.link-to-list-nav{
-    color: var(--black);
-}
 
 .menu_nav_ul_li_button-login-icon {
     margin-top: -0.5em;
 }
 
 .menu_nav_hamburger-icon {
-
     background-color: var(--orange);
     margin-top: 2em;
     display: flex;
-
-
     border: none;
 }
 
+/*huizen lijsten dus index*/
+
+.div-grid-house-lists {
+    display: grid;
+    gap: 3.5em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+}
+
+.article_houses {
+    border: solid var(--gray);
+}
+
+.article_houses__ol_names-of-houses {
+    display: grid;
+    grid-row-gap: 0.8em;
+    /*margin-left: 1em;*/
+    padding: 0;
+    margin-top: 0;
+    /*border: solid #dddddd;*/
+
+}
+
+.article_houses__li_position_items_text {
+    margin-left: 2em;
+    margin-right: 1em;
+
+}
+
+.article_houses__link_go_to_list {
+    color: var(--blue);
+    font-size: 1.3em
+}
+
+.article_houses_img {
+    height: auto;
+    max-width: 100%;
+}
+
+.article_link-to-list {
+    color: var(--black);
+}
+
+
+@keyframes list_houes_grid_ul_li__button-go_to_house {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.article_houses__button {
+    width: 7em;
+    background-color: var(--orange);
+    border: none;
+    font-size: 1.3em;
+    color: var(--black);
+    margin-left: 1.3em;
+    margin-bottom: 1em;
+
+}
+
+/*lijsten page*/
+
+.ul-users {
+    background-color: var(--ligthblue);
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    padding: 2em;
+}
+
+.users__li {
+    margin-right: 2em;
+
+}
+
+.users__show_avatars {
+    height: auto;
+    max-width: 100%;
+    width: 200px;
+}
+
+.description-section {
+    margin-top: 4em;
+    border-bottom: solid var(--gray);
+}
+
+.description-section__ul {
+    padding: 0;
+}
+
+.list_houses_grid {
+    display: grid;
+    gap: 3.5em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.list_houses_grid__article {
+    display: flex;
+}
+
+.list_houses_grid__ul {
+    display: grid;
+    grid-row-gap: 0.5em;
+    line-height: 1.5;
+    padding: 0;
+    border: solid var(--gray);
+}
+
+.list_houses_grid__image {
+    max-width: 100%;
+    height: 200px;
+}
+
+.list_houses_grid__li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.list_houses_grid__link-to-detailpage {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 1.3em;
+}
+
+.list_houes_grid__button {
+    width: 8em;
+    background-color: var(--orange);
+    border: none;
+    font-size: 1.3em;
+    color: var(--black);
+    margin-left: 1.3em;
+    margin-bottom: 1em;
+
+}
+.list_houses_grid__link-to-score{
+    color: var(--black);
+}
+
+/*score pagina*/
+.section_house_details {
+    margin-top: 2em;
+    background-color: var(--ligthblue);
+    padding: 1em;
+    max-width: 61em;
+}
+
+.house_details_img__image_house_score {
+    max-width: 100%;
+    height: auto;
+}
+
+.house_details__li {
+    font-size: 1.3em;
+    color: var(--blue);
+
+}
+
+.list_houses-grid__price {
+    font-size: 1.2em;
+    margin-left: 1.5em;
+}
+
+.house_detai__price_house {
+    font-size: 1.2em;
+}
+
+.gridcontainer_div_section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    max-width: 121em;
+    margin-top: 3em;
+    /*grid-template-columns:repeat(auto-fit,32em)*/
+}
+
+.section_score_field_numbers, .section-give_notes, .show_score_house, .input_notes, .li_users {
+    background-color: var(--ligthblue);
+    margin-bottom: 2em;
+    padding: 1em;
+    margin-right: 4em;
+}
+
+.show_notes,.show_score_house__output_number {
+    padding: 0;
+}
+.score_field_numbers__form_inputfields {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+}
+
+.form_inputfields__label-inputfield {
+    display: grid;
+    grid-template-columns: 6em 8em;
+}
+
+.form_inputfields__save_buton {
+    background-color: var(--orange);
+    border: none;
+    font-size: 1.3em;
+    width: 6em;
+    text-decoration: none;
+}
+
+.section-give_notes__text-input-notes-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#note-area {
+    min-height: 100px;
+    min-width: 100px;
+    resize: both;
+    overflow: auto;
+}
+
+.score_others_grid_container_title {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, 20em);*/
+    padding: 0;
+    margin-left: 0;
+
+}
+
+/* HTML: <div class="loader"></div> */
+/*.loader {*/
+/*    width: 60px;*/
+/*    aspect-ratio: 4;*/
+/*    background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;*/
+/*    clip-path: inset(0 100% 0 0);*/
+/*    animation: l1 1s steps(4) infinite;*/
+/*}*/
+/*@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}*/
+
+
+/*todo de score pagina onnodige css weghalen en aanpassen naar database*/
+/*de partials*/
+.output_other_users {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+
+/*media queryies*/
 @media only screen and (min-width: 650px) {
 
+    /*nav*/
     .menu-nav_ul {
         display: flex;
         row-gap: 1em;
@@ -117,93 +393,9 @@ header {
     }
 }
 
-/*huizen lijsten dus index*/
 
 
-/*.section-title_description {*/
-/*    border-bottom: solid var(--gray);*/
-/*    margin-bottom: 1em;*/
-
-/*}*/
-
-.div-grid-house-lists {
-    display: grid;
-    gap: 3.5em;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-}
-
-.article_houses {
-    border: solid var(--gray);
-}
-
-.article_houses__ol_names-of-houses {
-    display: grid;
-    grid-row-gap: 0.8em;
-    /*margin-left: 1em;*/
-    padding: 0;
-    margin-top: 0;
-    /*border: solid #dddddd;*/
-
-}
-
-.article_houses__image_house_icon {
-    /*margin-left: -2em;*/
-
-
-    max-width: 100%;
-    height: auto;
-    /*object-fit: cover;*/
-
-}
-.article_houses__link_go_to_list{
-    color:var(--blue);
-    font-size:1.3em
-}
-.article_houses__li_position_items_text {
-    margin-left: 2em;
-    margin-right: 1em;
-
-}
-.show_house{
-    height: auto;
-    max-width: 100%;
-}
-
-.link-to-list {
-    color: var(--black);
-}
-.link-to-list,.save_buton,.article_houses__button:hover {
-
-    text-decoration: underline;
-}
-/*.list_houes_grid_ul_li__button-go_to_house:hover{*/
-/*    background-color: var(--blue);*/
-/*    color: var(--white);*/
-
-/* }*/
-.list_houes_grid_ul_li__button-go_to_house,.save_buton,.article_houses__button:active{
-    transform: translateY(3px);
-    animation: bounce 0.8s ease-in-out 1;
-}
-@keyframes list_houes_grid_ul_li__button-go_to_house {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
-}
-
-
-
-.article_houses__button {
-    width: 7em;
-    background-color: var(--orange);
-    border: none;
-    font-size: 1.3em;
-    color: var(--black);
-    margin-left: 1.3em;
-    margin-bottom: 1em;
-
-}
+/*huizenlijsten dus index*/
 
 @media (width >= 400px) {
 
@@ -221,19 +413,26 @@ header {
 
     }
 
+/*    lijsten*/
+
+    .list_houses_grid {
+        display: grid;
+        gap: 3.5em;
+        grid-template-columns: repeat(auto-fit, 23em);
+        /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+        margin-top: 2em;
+    }
+
+    .list_houes_grid__button {
+        font-size: 1.5em;
+    }
+
+
 }
-
-
 @media (width >= 600px) {
 
     .article_houses__ol_names-of-houses {
-        /*margin-left: 0.5em;*/
         max-width: 86em;
-
-        /*padding: 0.5em;*/
-        /*margin: 1em 2em 2em 2em ;*/
-        /*height: 30em;*/
-
     }
 
 
@@ -248,270 +447,45 @@ header {
 
 }
 
-/*lijsten page*/
-.hr_bottom{
-    border-bottom: solid var(--gray);
-    margin-bottom: 2em;
-    padding-bottom: 1em;
-}
-
-.ul-users{
-    background-color: var(--ligthblue);
-}
-.users__li{
-    margin-right: 2em;
-
-
-}
-
-.show_avatars{
-    height: auto;
-    max-width: 100%;
-    width: 200px;
-}
-.description-section{
-    margin-top: 4em;
-    border-bottom: solid var(--gray);
-}
-.description-section__ul{
-    padding: 0;
-}
-.list_houses_grid{
-    display: grid;
-    gap: 3.5em;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-.list_houses_grid__article {
-    display: flex;
-}
-.list_houses_grid_ul__image_house_data {
-    display: grid;
-    grid-row-gap: 0.5em;
-    line-height: 1.5;
-    padding: 0;
-    border: solid var(--gray);
-}
-.list_houses_grid__mage_size_lijst {
-    max-width: 100%;
-    height: 200px;
-    /*with auto all images are than different and that is not good*/
-    /*object-fit: cover;*/
-}
-.list_houses_grid__li{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 1.5em;
-    line-height: 1.5em;
-    margin-left: 2em;
-    margin-right: 2em;
-}
-.list_houses_grid_ul_li_a__linkt_house{
-    color: var(--blue);
-    text-decoration: none;
-    font-weight: 300;
-    font-size: 1.3em;
-}
-.list_houes_grid_ul_li__button-go_to_house{
-    width: 8em;
-    background-color: var(--orange);
-    border: none;
-    font-size: 1.3em;
-    color: var(--black);
-    margin-left: 1.3em;
-    margin-bottom: 1em;
-
-}
-
-
-
-@media (width >= 400px) {
-
-    .list_houses_grid{
-        display: grid;
-        gap: 3.5em;
-        grid-template-columns: repeat(auto-fit, 23em);
-        /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-        margin-top: 2em;
-    }
-    .list_houes_grid_ul_li__button-go_to_house{
-        font-size: 1.5em;
-    }
-
-}
 
 @media (width >= 570px) {
 
 
-    .ul-users{
+    /*lijsten*/
+    .ul-users {
         display: grid;
         /*grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));*/
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         max-width: 128em;
         column-gap: 1em;
-        background-color: aliceblue;
-        /*padding-top: 2em;*/
+        background-color: var(--ligthblue);
         padding: 2em;
-        /*grid-template-rows:15em 1fr;*/
-
-
     }
 
-
-
-
-
-}
-
-/*todo de images de avatar ophalen van de gebruikers*/
-
-/*score pagina*/
-.title_page{
-    font-size: 2em;
-}
-.section_house_details{
-    margin-top: 2em;
-    background-color: var(--ligthblue);
-    padding: 1em;
-    max-width: 61em;
-}
-
-.house_details_img__image_house_score{
-    max-width: 100%;
-    height: auto;
-}
-.house_details__li{
-    font-size: 1.3em;
-    color: var(--blue);
-
-}
-.price_house_shared_list{
-    font-size: 1.2em;
-    margin-left: 1.5em;
-}
-.price_house{
-    font-size: 1.2em;
-}
-.gridcontainer_div_section{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-    max-width: 121em;
-    margin-top: 3em;
-    /*grid-template-columns:repeat(auto-fit,32em)*/
-}
-.section_score_field_numbers,.text_input_notes,.show_score_house,.input_notes,.li_users{
-    background-color: var(--ligthblue);
-    margin-bottom: 2em;
-    padding: 1em;
-    margin-right: 4em;
-}
-.show_notes{
-    padding: 0;
-}
-.show_score_house__output_number{
-    padding: 0;
-}
-
-
-.inputfields{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-}
-.label-inputfield{
-    display: grid;
-    grid-template-columns: 6em 8em;
-}
-.save_buton{
-    background-color: var(--orange);
-    border: none;
-    font-size: 1.3em;
-    width: 6em;
-    text-decoration: none;
-}
-
-.text-input-notes-form{
-    display: flex;
-    flex-direction: column;
-}
-#note-area{
-    min-height: 100px;
-    min-width: 100px;
-    resize: both;
-    overflow: auto;
-}
-.score_others_grid_container_title{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /*grid-template-columns: repeat(auto-fit, 20em);*/
-    padding: 0;
-    margin-left: 0;
-
-}
-
-/* HTML: <div class="loader"></div> */
-/*.loader {*/
-/*    width: 60px;*/
-/*    aspect-ratio: 4;*/
-/*    background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;*/
-/*    clip-path: inset(0 100% 0 0);*/
-/*    animation: l1 1s steps(4) infinite;*/
-/*}*/
-/*@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}*/
-
-
-
-@media (width >= 570px) {
-
-    .inputfields{
+    /*score pagina*/
+    .score_field_numbers__form_inputfields {
         grid-template-columns: 17em;
     }
-    .score_others_grid_container{
+
+    .score_others_grid_container {
         display: grid;
         margin-top: 4em;
 
     }
-    .gridcontainer_div_section{
+
+    .gridcontainer_div_section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         max-width: 121em;
         margin-top: 3em;
         /*grid-template-columns:repeat(auto-fit,32em)*/
     }
-
-
-
-
-
 }
 
-@media (width >= 980px) {
-
-    /*.gridcontainer_div_section{*/
-    /*    display: grid;*/
-    /*    !*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*!*/
-    /*    grid-template-columns:repeat(auto-fit,32em);*/
-    /*}*/
-
-}
-
+/*score */
 @media (width >= 1200px) {
-
-
-
-    .inputfields{
+    .score_field_numbers__form_inputfields {
         grid-template-columns: 17em;
     }
 
-}
-/*todo de score pagina onnodige css weghalen en aanpassen naar database*/
-/*de partials*/
-.output_other_users{
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-
-.house_details_text{
 }

@@ -17,34 +17,34 @@
 
 
         </ul>
-        <form method="PATCH" action="/score/<%= message.house %>" class="inputfields like" >
+        <form method="PATCH" action="/score/<%= message.house %>" class="score_field_numbers__form_inputfields like" >
             <input type="hidden" value="<%= message.house %>" name="actie" >
             <!--                inputfields niet aanpassen vanwege de client side javascript-->
 
 
-            <label for="algemeen" class="label-inputfield"><span>ligging:</span>
-                <input type="number" id="algemeen" name="algemeenNumber" value="<%= message.ligging %>"
+            <label for="algemeen" class="form_inputfields__label-inputfield"><span>ligging:</span>
+                <input type="number" id="algemeen" name="ligging" value="<%= message.ligging %>"
                        placeholder="0">
             </label>
-            <label for="keuken" class="label-inputfield"><span>ov:</span>
-                <input type="number" id="keuken" name="keukenNumber" value="<%= message.ov %>">
+            <label for="keuken" class="form_inputfields__label-inputfield"><span>ov:</span>
+                <input type="number" id="keuken" name="ov" value="<%= message.ov %>">
             </label>
-            <label for="Badkamer" class="label-inputfield"><span>type:</span>
-                <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.type %>">
+            <label for="Badkamer" class="form_inputfields__label-inputfield"><span>type:</span>
+                <input type="number" id="Badkamer" name="type" value="<%= message.type %>">
             </label>
-            <label for="Badkamer" class="label-inputfield"><span>algemeen:</span>
-                <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.algemeen %>">
+            <label for="Badkamer" class="form_inputfields__label-inputfield"><span>algemeen:</span>
+                <input type="number" id="Badkamer" name="algemeen" value="<%= message.algemeen %>">
             </label>
-            <label for="Badkamer" class="label-inputfield"><span>badkamer:</span>
+            <label for="Badkamer" class="form_inputfields__label-inputfield"><span>badkamer:</span>
                 <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.badkamer %>">
             </label>
-            <label for="Badkamer" class="label-inputfield"><span>tuin:</span>
+            <label for="Badkamer" class="form_inputfields__label-inputfield"><span>tuin:</span>
                 <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.tuin %>">
             </label>
-            <label for="Badkamer" class="label-inputfield"><span>keuken:</span>
+            <label for="Badkamer" class="form_inputfields__label-inputfield"><span>keuken:</span>
                 <input type="number" id="Badkamer" name="badkamerNumber" value="<%= message.keuken %>">
             </label>
-            <button type="submit" class="save_buton likes">Opslaan</button>
+            <button type="submit" class="form_inputfields__save_buton likes">Opslaan</button>
 
         </form>
 

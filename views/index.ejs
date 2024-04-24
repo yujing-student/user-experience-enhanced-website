@@ -20,14 +20,16 @@
                         <picture>
 
 
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%=list.houses_array[0].image.id%>?width=600&height=400&fit=cover&format=avif" type="image/avif">
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=600&height=400&fit=cover&format=avif"
+                                    type="image/avif">
 
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id%>?width=600&height=400&fit=cover&format=webp" type="image/webp">
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=600&height=400&fit=cover&format=webp"
+                                    type="image/webp">
 
 
-                            <img src="https://fdnd-agency.directus.app/assets/<%=list.houses_array[0].image.id %>?width=600&height=400&fit=cover"
-                                 alt="House Image" width="<%=  list.houses_array[0].image.width %>"
-                                 height=" <%=  list.houses_array[0].image.height %>" class="show_house"
+                            <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=600&height=400&fit=cover"
+                                 alt="House Image" width="<%= list.houses_array[0].image.width %>"
+                                 height=" <%= list.houses_array[0].image.height %>" class="article_houses_img"
                             >
                         </picture>
                     </li>
@@ -43,9 +45,11 @@
 
 
                 </ol>
-                <a href="/lijsten/<%= list.id %>" class="link-to-list"
-                   aria-label="ga naar deze lijst">     <button type="button" class="article_houses__button">Bekijk lijst
-                    </button>    </a>
+                <a href="/lijsten/<%= list.id %>" class="article_houses_link-to-list"
+                   aria-label="ga naar deze lijst">
+                    <button type="button" class="article_houses__button">Bekijk lijst
+                    </button>
+                </a>
 
             </article>
 

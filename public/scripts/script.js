@@ -3,7 +3,7 @@
 
 function notes () {
     // Selecteer alle bestelformulieren
-    let show_notes_var = document.querySelectorAll('.text-input-notes-form')
+    let show_notes_var = document.querySelectorAll('.section-give_notes__text-input-notes-form')
 // Loop door al die formulieren
     show_notes_var.forEach(function(form) {
         // Luister naar het submit event
@@ -62,7 +62,7 @@ notes()
 
 
 function scrolling(){
-    const submitButton = document.querySelector(".save_buton");
+    const submitButton = document.querySelector(".form_inputfields__save_buton");
     const scoreElement = document.querySelector(".output_other_users");
 
     submitButton.addEventListener("click", function (event) {
@@ -78,10 +78,10 @@ function scrolling(){
 
 function inputnumbers () {
     // Selecteer alle bestelformulieren
-    let form_numbers_score = document.querySelectorAll('.inputfields')
+    let form_numbers_score = document.querySelectorAll('.score_field_numbers__form_inputfields')
 
 
-    const submitButton = document.querySelector(".save_buton");
+    const submitButton = document.querySelector(".form_inputfields__save_buton");
     const scoreElement = document.querySelector(".output_other_users");
 // Loop door al die formulieren
     form_numbers_score.forEach(function(form) {

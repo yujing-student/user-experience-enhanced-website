@@ -102,7 +102,7 @@ const ligging = []
 const oppervlakte = []
 const message_score_page_data = [];
 
-
+// dit is de score pagina en hier kan je de score zien die je ingeeft en een score opgeven
 app.get('/score/:id', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*,image.id,image.height,image.width`)
@@ -127,7 +127,7 @@ app.get('/score/:id', function (request, response) {
         })
 })
 
-
+// hier word data in de array te zetten ik heb geen connectie met een database
 app.post('/score/:id', async function (request, response) {
     const listId = request.params.id;
 
@@ -223,13 +223,13 @@ app.post('/database/:id', function (request, response) {
         // Stap 2: Sla de nieuwe data op in de API
         // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
         fetch(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*`, {
-            method: 'PATCH',
+            method: 'post',
 
             // eerst moet uitgezoecht worden welk huis dit is en als je dat weet dan pas kan je wat doen vervolgens zit je nog met een geneste array met weer een object en arrays in dat object
             body: JSON.stringify({
                 rating: {
-                    algemeen:
-                    badkamer
+                    algemeen:request.body.ov
+
                 },
             }),
             headers: {

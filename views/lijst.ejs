@@ -19,7 +19,7 @@
 
                         <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover"
                              alt="House Image" width="<%= users.width %>"
-                             height=" <%= users.height %>" class="show_avatars"
+                             height=" <%= users.height %>" class="users__show_avatars"
                         >
                     </picture>
 
@@ -44,7 +44,7 @@
         <% list.houses.forEach(house => { %>
 
             <article class="list_houses_grid__article">
-                <ul class="list_houses_grid_ul__image_house_data">
+                <ul class="list_houses_grid__ul">
                     <li>
                         <picture>
                             <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.webp" type="image/webp"
@@ -52,7 +52,7 @@
                             >   <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.avif" type="image/avif"
 
                             >
-                        <img class="list_houses_grid__mage_size_lijst"
+                        <img class="list_houses_grid__image"
                              src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>"
                              width="<%= house.f_houses_id.poster_image.width %>"
                              height="<%= house.f_houses_id.poster_image.height %>"
@@ -61,7 +61,7 @@
 
                     </li>
                     <li class="list_houses_grid__li">
-                        <a href="../Detailpage/<%= house.id %>" class="list_houses_grid_ul_li_a__linkt_house"
+                        <a href="../Detailpage/<%= house.id %>" class="list_houses_grid__link-to-detailpage"
                            aria-label="ga naar dit huis"><%= house.f_houses_id.street %>
                             <%= house.f_houses_id.house_nr %><%= house.f_houses_id.house_nr_addition %>
                         </a>
@@ -69,11 +69,11 @@
 
                     <li class="list_houses_grid__li"><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></li>
 
-                    <li class="list_houses_grid__li price_house_shared_list">€<%=new Intl.NumberFormat("de-DE").format( house.f_houses_id.price)%> </li>
+                    <li class="list_houses_grid__li list_houses-grid__price">€<%=new Intl.NumberFormat("de-DE").format( house.f_houses_id.price)%> </li>
                     <li class=" list_houses_grid__li"><%= house.f_houses_id.agent %></li>
                     <li class="">
-                        <button class="list_houes_grid_ul_li__button-go_to_house">
-                            <a class="link-to-list" href="../score/<%= house.f_houses_id.id %>">Bekijk score
+                        <button class="list_houes_grid__button">
+                            <a class="list_houses_grid__link-to-score" href="../score/<%= house.f_houses_id.id %>">Bekijk score
                             </a>
                         </button>
 
