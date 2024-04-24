@@ -211,9 +211,9 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.list_houses_grid__article {
-    display: flex;
-}
+/*.list_houses_grid__article {*/
+/*    display: flex;*/
+/*}*/
 
 .list_houses_grid__ul {
     display: grid;
@@ -257,6 +257,7 @@ header {
 }
 .list_houses_grid__link-to-score{
     color: var(--black);
+
 }
 
 /*score pagina*/

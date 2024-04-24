@@ -43,7 +43,7 @@
 
         <% list.houses.forEach(house => { %>
 
-            <article class="list_houses_grid__article">
+
                 <ul class="list_houses_grid__ul">
                     <li>
                         <picture>
@@ -72,16 +72,15 @@
                     <li class="list_houses_grid__li list_houses-grid__price">€<%=new Intl.NumberFormat("de-DE").format( house.f_houses_id.price)%> </li>
                     <li class=" list_houses_grid__li"><%= house.f_houses_id.agent %></li>
                     <li class="">
-                        <button class="list_houes_grid__button">
-                            <a class="list_houses_grid__link-to-score" href="../score/<%= house.f_houses_id.id %>">Bekijk score
-                            </a>
-                        </button>
+                        <a class="list_houses_grid__link-to-score" href="../score/<%= house.f_houses_id.id %>">
+
+                            <button class="list_houes_grid__button">Bekijk score
+
+                        </button>  </a>
 
 
                 </ul>
 
-
-            </article>
         <% }); %>
     </div>
 </main>
