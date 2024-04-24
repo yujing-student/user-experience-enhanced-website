@@ -3,8 +3,8 @@
 
 
     <section>
-        <h1>score</h1>
-        <p>Hier kunt u een score geven over het huis.</p>
+        <h1 class="title_page">score</h1>
+        <p class="hr_bottom">Hier kunt u een score geven over het huis.</p>
 
         <ul class="section_house_details">
 
@@ -19,8 +19,9 @@
                      alt="image-house">
                 <% } %>
             </li>
-            <li class=""><%= house.street %> <%= house.house_nr %> </li>
+            <li class="house_details__li"><%= house.street %> <%= house.house_nr %> </li>
             <li class=""><%= house.city %> <%= house.postal_code %></li>
+            <li class="price_house">€<%=new Intl.NumberFormat("de-DE").format(house.price)%></li>
 
         </ul>
 
@@ -33,43 +34,46 @@
 
 
             <h2>score</h2>
-            <p>Geef een score over het huis van 0 tot en met 10.</p>
+            <p>Geef een score over het huis van 0 tot en met 5.</p>
 
 
             <form method="POST" action="/score/<%= house.id %>" class="inputfields like">
-                <input type="hidden" value="<%= house.id %>" name="actie">
+                <input type="hidden" value="<%= house.id %>" name="actie" required>
                 <!--                inputfields niet aanpassen vanwege de client side javascript-->
 
 
                 <label for="algemeen" class="label-inputfield"><span>algemeen:</span>
-                    <input type="number" id="algemeen" name="algemeenNumber" value=""
+                    <input type="number" id="algemeen" name="algemeenNumber" value="" required
                            placeholder="0">
                 </label>
                 <label for="keuken" class="label-inputfield"><span>keuken:</span>
-                    <input type="number" id="keuken" name="keukenNumber" value="" placeholder="0">
+                    <input type="number" id="keuken" name="keukenNumber" value="" placeholder="0" required>
                 </label>
                 <label for="Badkamer" class="label-inputfield"><span>Badkamer:</span>
-                    <input type="number" id="Badkamer" name="badkamerNumber" value=""
+                    <input type="number" id="Badkamer" name="badkamerNumber" value="" required
                            placeholder="0">
                 </label>
                 <label for="tuin" class="label-inputfield"><span>tuin:</span>
-                    <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0">
+                    <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0 " required>
                 </label>
-                <button type="submit" class="button-notes likes">Opslaan</button>
+                <button type="submit" class="save_buton likes">Opslaan</button>
+<!--                <div class="loader hide_loader"></div>-->
 
             </form>
         </section>
         <section class="text_input_notes">
             <h2 class="">Notities</h2>
             <p>Hier kunt u een notitie achterlaten.</p>
+
             <form method="POST" action="/score/<%= house.id %>" class="text-input-notes-form">
                 <input type="hidden" value="<%= house.id %>">
                 <label for="bericht" aria-label="laat uw noitite achter">
                     <textarea id="note-area" name="notes_shown"></textarea>
                 </label>
-                <button type="submit" class="button-notes">Opslaan</button>
+                <button type="submit" class="save_buton">Opslaan</button>
 
             </form>
+
         </section>
 
         <section class="show_score_house">
@@ -84,11 +88,17 @@
 
 
         <section class="input_notes">
-            <h2 class="notes_h2">Uw notities</h2>
+            <h2 class="">Uw notities</h2>
             <ul class="show_notes">
-                <% notities.forEach(message =>{ %>
-                    <li class=""><%= message %></li>
-                <% }) %>
+
+                <% if (notities.length > 0) { %>
+                    <% notities.forEach(message =>{ %>
+                        <li class="house_details_text"> : <%= message %></li>
+                    <% }) %>
+                <% } else { %>
+                    <li class="house_details_text">U hebt geen notitie ingevuld</li>
+                <% } %>
+
             </ul>
         </section>
 
@@ -97,11 +107,10 @@
 
     <div class="score_others_grid_container">
         <h2 class="">Bekijk de beoordelingen van anderen</h2>
-        <section class=" ">
+        <section class="">
             <ul class="score_others_grid_container_title">
                 <% users.forEach(users => { %>
                     <li class="li_users">
-                        <h2><%= users.name %></h2>
                         <picture>
                             <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>.webp"
                                     type="image/webp">

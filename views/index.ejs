@@ -1,9 +1,9 @@
 <%- include('./partials/head') %>
 <main class="">
 
-    <section class="section-title_description">
-        <h2>Uw gedeelde huizen lijsten</h2>
-        <p>Hier kunt u zien welke lijsten u deelt samen met anderen </p>
+    <section class="">
+        <h1 class="title_page">Uw huizen lijsten</h1>
+        <p class="hr_bottom">Hier kunt u zien welke lijsten u deelt samen met anderen </p>
 
 
     </section>
@@ -43,9 +43,9 @@
 
 
                 </ol>
-                <button type="button" class="article_houses__button"><a href="/lijsten/<%= list.id %>" class="link-to-list"
-                                                                        aria-label="ga naar deze lijst">Bekijk
-                        lijst</a></button>
+                <a href="/lijsten/<%= list.id %>" class="link-to-list"
+                   aria-label="ga naar deze lijst">     <button type="button" class="article_houses__button">Bekijk lijst
+                    </button>    </a>
 
             </article>
 

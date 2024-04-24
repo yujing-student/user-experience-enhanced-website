@@ -14,20 +14,18 @@ const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?f
 const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
 // baseurl gebruiken werkt niet dan word er niks geladen
 
-const feedback_users = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback`)
 const houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/1?fields=*.*.*`)
 
+const users_image = users.data.map(avatar => {
+    console.log(avatar.avatar.id);
+    return {
+        id_avatar: avatar.avatar.id,
+        width: avatar.avatar.width,
+        height: avatar.avatar.height,
+        name:avatar.name
 
-
-
-// console.log(JSON.stringify(feedbackdetails.data));
-//
-// console.log(JSON.stringify(feedbackdetails.data));
-// console.log(JSON.stringify(houses.data));
-// console.log(JSON.stringify(users.data));
-// console.log(JSON.stringify(feedback.data));
-
-
+    };
+});
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
 // gebruik ejs voor het tonen van de informatie aan de gebruiker
@@ -54,7 +52,7 @@ app.get('/', async function (request, response) {
 
                 id: listItem.id,
                 title: listItem.title,
-                // houses arrya is de nummers van die huizen en de inhoud daarvan
+                // houses arrya is de nummers van die huizen en de inhoud daarvan dit is nodig omdat houses een array is binnen een array
                 houses_array: listItem.houses.map(house => ({
                     id: house.id,
                     image: house.f_houses_id.poster_image
@@ -73,21 +71,13 @@ app.get('/', async function (request, response) {
     }
 });
 
+// dit zijn de gedeelde lisjten
 app.get('/lijsten/:id', async function (request, response) {
-    const listId = request.params.id;
-    // console.log('Fetching data for list ID:', listId);
 
+    // hier word de data omgezet met fetch
     const apiData = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/${request.params.id}?fields=*.*.*.*`)
+    // hier word met map een nieuwe array gemaakt waardoor ik die kan aanroepen op de ejs
 
-    const users_image = users.data.map(avatar => {
-        console.log(avatar.avatar.id);
-        return {
-            id_avatar: avatar.avatar.id,
-            width: avatar.avatar.width,
-            height: avatar.avatar.height,
-
-        };
-    });
     try {
         response.render('lijst.ejs',
             {
@@ -102,7 +92,7 @@ app.get('/lijsten/:id', async function (request, response) {
 });
 
 
-
+// hier worden de arrays aangemaakt om te gebruiken
 const algemeen = []
 const keuken = []
 const badkamer = []
@@ -112,25 +102,12 @@ const ligging = []
 const oppervlakte = []
 const message_score_page_data = [];
 
-const users_image = users.data.map(avatar => {
-    console.log(avatar.avatar.id);
-    return {
-        id_avatar: avatar.avatar.id,
-        width: avatar.avatar.width,
-        height: avatar.avatar.height,
-        name:avatar.name
 
-    };
-});
 app.get('/score/:id', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*,image.id,image.height,image.width`)
+
         .then(async ({ data }) => {
-
-
-            // Pas de url naar de afbeelding aan zodat die verwijst naar directus
-
-// console.log(data)
 
             // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
             response.render('score', {
@@ -186,6 +163,7 @@ app.post('/score/:id', async function (request, response) {
             const text_succes = 'uw huis is toegevoegd'
             if (request.body.enhanced) {
                 response.render('partials/showScore', {result: apiResponse,
+
 
                         algemeen: algemeen,
                         keuken: keuken,

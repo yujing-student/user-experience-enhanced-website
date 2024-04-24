@@ -26,6 +26,7 @@ body {
     --orange: #F7A100;
     --black: #333333;
     --gray: #dddddd;
+    --ligthblue: #e6f2f7;
 
     --margin-input-fields: 0 0 1em 0;
     --margin-2-em: 2em;
@@ -116,12 +117,14 @@ header {
     }
 }
 
-/*gedeelde lijsten dus index*/
-.section-title_description {
-    border-bottom: solid var(--gray);
-    margin-bottom: 1em;
+/*huizen lijsten dus index*/
 
-}
+
+/*.section-title_description {*/
+/*    border-bottom: solid var(--gray);*/
+/*    margin-bottom: 1em;*/
+
+/*}*/
 
 .div-grid-house-lists {
     display: grid;
@@ -170,7 +173,7 @@ header {
 .link-to-list {
     color: var(--black);
 }
-.link-to-list:hover {
+.link-to-list,.save_buton,.article_houses__button:hover {
 
     text-decoration: underline;
 }
@@ -179,14 +182,14 @@ header {
 /*    color: var(--white);*/
 
 /* }*/
-.list_houes_grid_ul_li__button-go_to_house:active{
-    transform: translateY(3px);  /* Move the button down slightly */
+.list_houes_grid_ul_li__button-go_to_house,.save_buton,.article_houses__button:active{
+    transform: translateY(3px);
     animation: bounce 0.8s ease-in-out 1;
 }
 @keyframes list_houes_grid_ul_li__button-go_to_house {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }  /* Move the button up a bit */
-    100% { transform: translateY(0); }  /* Return to original position */
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
 }
 
 
@@ -246,20 +249,21 @@ header {
 }
 
 /*lijsten page*/
-
-.grid-container{
-    border-top: solid var(--gray);
-    margin-top: 2em;
-    padding-top: 1em;
-
-    display: flex;
-    flex-direction: column;
-    row-gap: 1em;
-
-    /*width: 200px;  !* Set desired width *!*/
-    /*height: 200px;  !* Set desired height *!*/
-    overflow: hidden;  /* Hide any overflowing parts */
+.hr_bottom{
+    border-bottom: solid var(--gray);
+    margin-bottom: 2em;
+    padding-bottom: 1em;
 }
+
+.ul-users{
+    background-color: var(--ligthblue);
+}
+.users__li{
+    margin-right: 2em;
+
+
+}
+
 .show_avatars{
     height: auto;
     max-width: 100%;
@@ -307,7 +311,7 @@ header {
     color: var(--blue);
     text-decoration: none;
     font-weight: 300;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 .list_houes_grid_ul_li__button-go_to_house{
     width: 8em;
@@ -340,17 +344,20 @@ header {
 @media (width >= 570px) {
 
 
-    .grid-container{
+    .ul-users{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+        /*grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));*/
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        max-width: 128em;
+        column-gap: 1em;
+        background-color: aliceblue;
+        /*padding-top: 2em;*/
+        padding: 2em;
         /*grid-template-rows:15em 1fr;*/
 
 
     }
-    .grid-item{
-        width: 13em;
 
-    }
 
 
 
@@ -360,9 +367,12 @@ header {
 /*todo de images de avatar ophalen van de gebruikers*/
 
 /*score pagina*/
+.title_page{
+    font-size: 2em;
+}
 .section_house_details{
     margin-top: 2em;
-    background-color: #e6f2f7;
+    background-color: var(--ligthblue);
     padding: 1em;
     max-width: 61em;
 }
@@ -371,16 +381,33 @@ header {
     max-width: 100%;
     height: auto;
 }
+.house_details__li{
+    font-size: 1.3em;
+    color: var(--blue);
+
+}
+.price_house_shared_list{
+    font-size: 1.2em;
+    margin-left: 1.5em;
+}
+.price_house{
+    font-size: 1.2em;
+}
 .gridcontainer_div_section{
     display: grid;
-    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-    grid-template-columns:repeat(auto-fit,20em);
+    grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+    max-width: 121em;
+    margin-top: 3em;
+    /*grid-template-columns:repeat(auto-fit,32em)*/
 }
 .section_score_field_numbers,.text_input_notes,.show_score_house,.input_notes,.li_users{
-    background-color: #e6f2f7;
+    background-color: var(--ligthblue);
     margin-bottom: 2em;
     padding: 1em;
     margin-right: 4em;
+}
+.show_notes{
+    padding: 0;
 }
 .show_score_house__output_number{
     padding: 0;
@@ -396,26 +423,44 @@ header {
     display: grid;
     grid-template-columns: 6em 8em;
 }
-.button-notes{
+.save_buton{
     background-color: var(--orange);
     border: none;
-    font-size: 1em;
+    font-size: 1.3em;
     width: 6em;
+    text-decoration: none;
 }
 
 .text-input-notes-form{
     display: flex;
     flex-direction: column;
 }
-
+#note-area{
+    min-height: 100px;
+    min-width: 100px;
+    resize: both;
+    overflow: auto;
+}
 .score_others_grid_container_title{
     display: grid;
-    /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-    grid-template-columns: repeat(auto-fit, 20em);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, 20em);*/
     padding: 0;
     margin-left: 0;
 
 }
+
+/* HTML: <div class="loader"></div> */
+/*.loader {*/
+/*    width: 60px;*/
+/*    aspect-ratio: 4;*/
+/*    background: radial-gradient(circle closest-side,#000 90%,#0000) 0/calc(100%/3) 100% space;*/
+/*    clip-path: inset(0 100% 0 0);*/
+/*    animation: l1 1s steps(4) infinite;*/
+/*}*/
+/*@keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}*/
+
+
 
 @media (width >= 570px) {
 
@@ -424,18 +469,17 @@ header {
     }
     .score_others_grid_container{
         display: grid;
+        margin-top: 4em;
 
     }
-    .grid-container{
+    .gridcontainer_div_section{
         display: grid;
-        grid-template-columns:repeat(auto-fit,20em);
-        /*grid-template-rows:15em 1fr;*/
-
-
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        max-width: 121em;
+        margin-top: 3em;
+        /*grid-template-columns:repeat(auto-fit,32em)*/
     }
-    .grid-item{
 
-    }
 
 
 
@@ -444,11 +488,11 @@ header {
 
 @media (width >= 980px) {
 
-    .gridcontainer_div_section{
-        display: grid;
-        /*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
-        grid-template-columns:repeat(auto-fit,32em);
-    }
+    /*.gridcontainer_div_section{*/
+    /*    display: grid;*/
+    /*    !*grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*!*/
+    /*    grid-template-columns:repeat(auto-fit,32em);*/
+    /*}*/
 
 }
 
@@ -466,7 +510,6 @@ header {
 .output_other_users{
     display: flex;
     flex-direction: column;
-    row-gap: 2em;
     padding: 0;
 }
 

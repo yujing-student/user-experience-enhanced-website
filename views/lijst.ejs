@@ -4,12 +4,13 @@
 
 
     <section class="">
-        <h2>Gebruikers</h2>
-        <p>Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
+        <h1 class="title_page">Gebruikers</h1>
+        <p class="hr_bottom">Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
 
-            <ul class="grid-container">
-                <li class="grid-item">
-                    <% users.forEach(users => { %>
+            <ul class="ul-users">
+                <% users.forEach(users => { %>
+                <li class="users__li">
+
                     <picture>
                         <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=avif" type="image/avif">
 
@@ -21,9 +22,11 @@
                              height=" <%= users.height %>" class="show_avatars"
                         >
                     </picture>
-                </li>
 
-                <% }) %>
+                </li>
+                    <% }) %>
+
+
             </ul>
 
 
@@ -55,6 +58,7 @@
                              height="<%= house.f_houses_id.poster_image.height %>"
                              alt="image house">
                         </picture>
+
                     </li>
                     <li class="list_houses_grid__li">
                         <a href="../Detailpage/<%= house.id %>" class="list_houses_grid_ul_li_a__linkt_house"
@@ -64,7 +68,8 @@
                     </li>
 
                     <li class="list_houses_grid__li"><%= house.f_houses_id.postal_code %> <%= house.f_houses_id.city %></li>
-                    <li class="list_houses_grid__li">€<%= house.f_houses_id.price %></li>
+
+                    <li class="list_houses_grid__li price_house_shared_list">€<%=new Intl.NumberFormat("de-DE").format( house.f_houses_id.price)%> </li>
                     <li class=" list_houses_grid__li"><%= house.f_houses_id.agent %></li>
                     <li class="">
                         <button class="list_houes_grid_ul_li__button-go_to_house">
