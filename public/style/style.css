@@ -259,7 +259,7 @@ header {
 .show_avatars{
     height: auto;
     max-width: 100%;
-    width: 200px;
+    /*width: 200px;*/
 }
 .description-section{
     margin-top: 4em;

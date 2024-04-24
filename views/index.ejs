@@ -18,14 +18,17 @@
                     <li>
                         <a href="/lijsten/<%= list.id %>" aria-label="ga naar deze lijst"></a>
                         <picture>
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>.webp" type="image/webp">
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>.avif" type="image/avif">
 
-                        <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>"
-                             width="<%= list.houses_array[0].image.width %>"
-                             height="<%= list.houses_array[0].image.height %>"
-                             alt="House Image"
-                             class=" article_houses__image_house_icon">
+
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%=list.houses_array[0].image.id%>?width=600&height=400&fit=cover&format=avif" type="image/avif">
+
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id%>?width=600&height=400&fit=cover&format=webp" type="image/webp">
+
+
+                            <img src="https://fdnd-agency.directus.app/assets/<%=list.houses_array[0].image.id %>?width=600&height=400&fit=cover"
+                                 alt="House Image" width="<%=  list.houses_array[0].image.width %>"
+                                 height=" <%=  list.houses_array[0].image.height %>" class="show_avatars"
+                            >
                         </picture>
                     </li>
                     <li class="  article_houses__li_position_items_text">

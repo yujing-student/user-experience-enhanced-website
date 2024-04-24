@@ -9,7 +9,7 @@ const app = express()
 
 // file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
-const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
+const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*`)
 const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?fields=*.*.`)
 const baseUlr = await fetchJson('https://fdnd-agency.directus.app/items/')
 // baseurl gebruiken werkt niet dan word er niks geladen
@@ -26,7 +26,6 @@ const houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_houses/
 // console.log(JSON.stringify(houses.data));
 // console.log(JSON.stringify(users.data));
 // console.log(JSON.stringify(feedback.data));
-console.log(JSON.stringify(feedback.data[0].rating));
 
 
 // Stel ejs in als template engine
@@ -214,7 +213,11 @@ app.get('/database/:id', function (request, response) {
 
 
     const feedbackdetails = feedback.data.map((listItem) => {
-        console.log(listItem);
+
+        console.log(JSON.stringify(listItem+'dit is alles'))
+        console.log(JSON.stringify(listItem.user+'dit is de user array'))
+        console.log(JSON.stringify(listItem.rating+'dit is de rating object'))
+        console.log(JSON.stringify(listItem)+'hier is een stringfy');
         return {
             id: listItem.id,
             ligging: listItem.rating.ligging,
@@ -247,7 +250,7 @@ app.post('/database/:id', function (request, response) {
             // eerst moet uitgezoecht worden welk huis dit is en als je dat weet dan pas kan je wat doen vervolgens zit je nog met een geneste array met weer een object en arrays in dat object
             body: JSON.stringify({
                 rating: {
-                    algemeen,
+                    algemeen:
                     badkamer
                 },
             }),
