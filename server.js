@@ -186,63 +186,6 @@ app.post('/score/:id', async function (request, response) {
         })
 })
 
-app.get('/database/:id', function (request, response) {
-    // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-
-
-    const feedbackdetails = feedback.data.map((listItem) => {
-
-        console.log(JSON.stringify(listItem+'dit is alles'))
-        console.log(JSON.stringify(listItem.user+'dit is de user array'))
-        console.log(JSON.stringify(listItem.rating+'dit is de rating object'))
-        console.log(JSON.stringify(listItem)+'hier is een stringfy');
-        return {
-            id: listItem.id,
-            ligging: listItem.rating.ligging,
-            ov: listItem.rating.ov,
-            type: listItem.rating.type,
-            user: listItem.user,
-        };
-    });
-    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*.*`)
-        .then(async ({ data }) => {
-
-            // Render detail.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-            response.render('database', {
-                house: data,
-                notities: message_score_page_data,
-                feedback:feedbackdetails
-            })
-        })
-})
-app.post('/database/:id', function (request, response) {
-    // Stap 1: Haal de huidige data op, zodat we altijd up-to-date zijn, en niks weggooien van anderen
-
-    // Haal eerst de huidige gegevens voor dit board op, uit de WHOIS API
-    fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`).then(({ data }) => {
-        // Stap 2: Sla de nieuwe data op in de API
-        // Voeg de nieuwe lijst messages toe in de WHOIS API, via een PATCH request
-        fetch(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*`, {
-            method: 'post',
-
-            // eerst moet uitgezoecht worden welk huis dit is en als je dat weet dan pas kan je wat doen vervolgens zit je nog met een geneste array met weer een object en arrays in dat object
-            body: JSON.stringify({
-                rating: {
-                    algemeen:request.body.ov
-
-                },
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        }).then((patchResponse) => {
-            // Redirect naar de persoon pagina
-            response.redirect(303, '/database/' + request.params.id)
-        })
-    })
-})
-
-
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 
