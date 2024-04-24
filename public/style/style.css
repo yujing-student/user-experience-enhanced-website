@@ -60,12 +60,12 @@ main {
     padding-bottom: 1em;
 }
 
-.article_link-to-list, .form_inputfields__save_buton, .article_houses__button:hover {
+.article_link-to-list, .form_inputfields__save_buton, .names-of-houses_houses__button:hover {
 
     text-decoration: underline;
 }
 
-.list_houes_grid__button, .form_inputfields__save_buton, .article_houses__button:active {
+.list_houes_grid__button, .form_inputfields__save_buton, .names-of-houses_houses__button:active {
     transform: translateY(3px);
     animation: bounce 0.8s ease-in-out 1;
 }
@@ -116,27 +116,25 @@ header {
 
 }
 
-.article_houses {
-    border: solid var(--gray);
-}
 
-.article_houses__ol_names-of-houses {
+
+.ol_names-of-houses {
     display: grid;
     grid-row-gap: 0.8em;
     /*margin-left: 1em;*/
     padding: 0;
     margin-top: 0;
-    /*border: solid #dddddd;*/
+    border: solid var(--gray);
 
 }
 
-.article_houses__li_position_items_text {
+.names-of-houses__li_position_items_text {
     margin-left: 2em;
     margin-right: 1em;
 
 }
 
-.article_houses__link_go_to_list {
+.names-of-houses__link_go_to_list {
     color: var(--blue);
     font-size: 1.3em
 }
@@ -164,7 +162,7 @@ header {
 }
 
 
-.article_houses__button {
+.names-of-houses_houses__button {
     width: 7em;
     background-color: var(--orange);
     border: none;
@@ -407,7 +405,7 @@ header {
         grid-template-columns: repeat(auto-fit, 18em);
     }
 
-    .article_houses__button {
+    .names-of-houses_houses__button {
         width: 8em;
         font-size: 1.5em;
 
@@ -432,7 +430,7 @@ header {
 }
 @media (width >= 600px) {
 
-    .article_houses__ol_names-of-houses {
+    .ol_names-of-houses {
         max-width: 86em;
     }
 

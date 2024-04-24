@@ -12,8 +12,8 @@
 
         <% lists.forEach(list => { %>
 
-            <article class="article_houses">
-                <ol class="article_houses__ol_names-of-houses">
+
+                <ol class="ol_names-of-houses">
 
                     <li>
                         <a href="/lijsten/<%= list.id %>" aria-label="ga naar deze lijst"></a>
@@ -29,29 +29,31 @@
 
                             <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=600&height=400&fit=cover"
                                  alt="House Image" width="<%= list.houses_array[0].image.width %>"
-                                 height=" <%= list.houses_array[0].image.height %>" class="article_houses_img"
+                                 height=" <%= list.houses_array[0].image.height %>" class="names-of-houses__img"
                             >
                         </picture>
                     </li>
-                    <li class="  article_houses__li_position_items_text">
+                    <li class="names-of-houses__li_position_items_text">
                         <a
                                 href="/lijsten/<%= list.id %>"
-                                class="article_houses__link_go_to_list"><%= list.title %>
+                                class="names-of-houses__link_go_to_list"><%= list.title %>
                         </a>
                     </li>
-                    <li class=" article_houses__li_position_items_text">
+                    <li class=" names-of-houses__li_position_items_text">
                         Huizen: <%= list.houses_array.length %>
+                    </li>
+                    <li class=" names-of-houses__li_position_items_text">
+                        <a href="/lijsten/<%= list.id %>" class="names-of-houses_link-to-list"
+                           aria-label="ga naar deze lijst">
+                            <button type="button" class="names-of-houses_houses__button">Bekijk lijst
+                            </button>
+                        </a>
                     </li>
 
 
                 </ol>
-                <a href="/lijsten/<%= list.id %>" class="article_houses_link-to-list"
-                   aria-label="ga naar deze lijst">
-                    <button type="button" class="article_houses__button">Bekijk lijst
-                    </button>
-                </a>
 
-            </article>
+
 
         <% }) %>
     </div>
