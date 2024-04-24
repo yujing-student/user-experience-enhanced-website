@@ -37,7 +37,11 @@
                 <ul class="list_houses_grid_ul__image_house_data">
                     <li>
                         <picture>
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.webp" type="image/webp">
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.webp" type="image/webp"
+
+                            >   <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.avif" type="image/avif"
+
+                            >
                         <img class="list_houses_grid__mage_size_lijst"
                              src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>"
                              width="<%= house.f_houses_id.poster_image.width %>"

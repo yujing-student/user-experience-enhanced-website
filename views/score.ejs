@@ -17,7 +17,7 @@
                      height="<%= house.poster_image.height %>"
                      class="house_details_img__image_house_score"
                      alt="image-house">
-            <% } %>
+                <% } %>
             </li>
             <li class=""><%= house.street %> <%= house.house_nr %> </li>
             <li class=""><%= house.city %> <%= house.postal_code %></li>
@@ -36,9 +36,9 @@
             <p>Geef een score over het huis van 0 tot en met 10.</p>
 
 
-            <form method="POST" action="/score/<%= house.id %>" class="inputfields like" >
-                <input type="hidden" value="<%= house.id %>" name="actie" >
-<!--                inputfields niet aanpassen vanwege de client side javascript-->
+            <form method="POST" action="/score/<%= house.id %>" class="inputfields like">
+                <input type="hidden" value="<%= house.id %>" name="actie">
+                <!--                inputfields niet aanpassen vanwege de client side javascript-->
 
 
                 <label for="algemeen" class="label-inputfield"><span>algemeen:</span>
@@ -76,8 +76,8 @@
             <h2 class="">Beoordeling</h2>
 
             <div class=" show_score_house__output_number">
-<!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
-                    <%- include('partials/showScore', {result: house, url: "house"}); %>
+                <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
+                <%- include('partials/showScore', {result: house, url: "house"}); %>
 
             </div>
         </section>
@@ -100,22 +100,27 @@
         <section class=" ">
             <ul class="score_others_grid_container_title">
                 <% users.forEach(users => { %>
-                <li class="li_users">
-                    <h2><%= users.name %></h2>
-                    <picture>
-                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>.webp" type="image/webp">
-                    <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
-                         alt="House Image" width="<%= users.width %>"
-                         height=" <%= users.height %>" class="show_avatars"
-                    >
-                    </picture>
-                    <ul class="show_score_house__output_number">
+                    <li class="li_users">
+                        <h2><%= users.name %></h2>
+                        <picture>
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>.webp"
+                                    type="image/webp">
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>.avif"
+                                    type="image/avif"
 
-                        <%- include('partials/showScore', {result: house}); -%>
+                            >
+                            <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
+                                 alt="House Image" width="<%= users.width %>"
+                                 height=" <%= users.height %>" class="show_avatars"
+                            >
+                        </picture>
+                        <ul class="show_score_house__output_number">
 
-                    </ul>
-                </li>
-                    <% }) %>
+                            <%- include('partials/showScore', {result: house}); -%>
+
+                        </ul>
+                    </li>
+                <% }) %>
 
             </ul>
 
