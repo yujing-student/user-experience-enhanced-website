@@ -117,24 +117,24 @@ header {
 }
 
 /*gedeelde lijsten dus index*/
-.main-section-title_description {
+.section-title_description {
     border-bottom: solid var(--gray);
     margin-bottom: 1em;
 
 }
 
-.main-div-grid-house-lists {
+.div-grid-house-lists {
     display: grid;
     gap: 3.5em;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
 }
 
-.main-div-article {
+.article_houses {
     border: solid var(--gray);
 }
 
-.main-div-article-ol_names-of-houses {
+.article_houses__ol_names-of-houses {
     display: grid;
     grid-row-gap: 0.8em;
     /*margin-left: 1em;*/
@@ -144,7 +144,7 @@ header {
 
 }
 
-.main-div-article-ol-li-a_image_house_icon {
+.article_houses__image_house_icon {
     /*margin-left: -2em;*/
 
 
@@ -153,10 +153,13 @@ header {
     /*object-fit: cover;*/
 
 }
-
-.position_items_text {
+.article_houses__link_go_to_list{
+    color:var(--blue);
+    font-size:1.3em
+}
+.article_houses__li_position_items_text {
     margin-left: 2em;
-    height: 1.5em;
+    margin-right: 1em;
 
 }
 
@@ -184,7 +187,7 @@ header {
 
 
 
-.button-got-list {
+.article_houses__button {
     width: 7em;
     background-color: var(--orange);
     border: none;
@@ -198,14 +201,14 @@ header {
 @media (width >= 400px) {
 
 
-    .main-div-grid-house-lists {
+    .div-grid-house-lists {
         display: grid;
         gap: 3.5em;
         grid-template-columns: repeat(auto-fit, 18em);
     }
 
-    .button-got-list {
-        width: 10em;
+    .article_houses__button {
+        width: 8em;
         font-size: 1.5em;
 
 
@@ -216,7 +219,7 @@ header {
 
 @media (width >= 600px) {
 
-    .main-div-article-ol_names-of-houses {
+    .article_houses__ol_names-of-houses {
         /*margin-left: 0.5em;*/
         max-width: 86em;
 
@@ -227,7 +230,7 @@ header {
     }
 
 
-    .main-div-grid-house-lists {
+    .div-grid-house-lists {
         display: grid;
         gap: 3.5em;
         grid-template-columns: repeat(auto-fit, 23em);
@@ -393,7 +396,7 @@ header {
     background-color: var(--orange);
     border: none;
     font-size: 1em;
-    width: 10em;
+    width: 6em;
 }
 
 .text-input-notes-form{
@@ -451,3 +454,13 @@ header {
 
 }
 /*todo de score pagina onnodige css weghalen en aanpassen naar database*/
+/*de partials*/
+.output_other_users{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    padding: 0;
+}
+
+.house_details_text{
+}

@@ -1,42 +1,46 @@
 <%- include('./partials/head') %>
 <main class="">
 
-    <section class="main-section-title_description">
+    <section class="section-title_description">
         <h2>Uw gedeelde huizen lijsten</h2>
         <p>Hier kunt u zien welke lijsten u deelt samen met anderen </p>
 
 
     </section>
 
-    <div class="main-div-grid-house-lists">
+    <div class="div-grid-house-lists">
 
         <% lists.forEach(list => { %>
 
-            <article class="main-div-article">
-                <ol class="main-div-article-ol_names-of-houses">
+            <article class="article_houses">
+                <ol class="article_houses__ol_names-of-houses">
 
                     <li>
                         <a href="/lijsten/<%= list.id %>" aria-label="ga naar deze lijst"></a>
+                        <picture>
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>.webp" type="image/webp">
+
                         <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>"
                              width="<%= list.houses_array[0].image.width %>"
                              height="<%= list.houses_array[0].image.height %>"
                              alt="House Image"
-                             class=" main-div-article-ol-li-a_image_house_icon">
+                             class=" article_houses__image_house_icon">
+                        </picture>
                     </li>
-                    <li class="  position_items_text">
+                    <li class="  article_houses__li_position_items_text">
                         <a
                                 href="/lijsten/<%= list.id %>"
-                                class="link-to-list"><%= list.title %>
+                                class="article_houses__link_go_to_list"><%= list.title %>
                         </a>
                     </li>
-                    <li class=" position_items_text">
+                    <li class=" article_houses__li_position_items_text">
                         Huizen: <%= list.houses_array.length %>
                     </li>
 
 
                 </ol>
-                <button type="button" class="button-got-list"><a href="/lijsten/<%= list.id %>" class="link-to-list"
-                                                                 aria-label="ga naar deze lijst">Bekijk
+                <button type="button" class="article_houses__button"><a href="/lijsten/<%= list.id %>" class="link-to-list"
+                                                                        aria-label="ga naar deze lijst">Bekijk
                         lijst</a></button>
 
             </article>

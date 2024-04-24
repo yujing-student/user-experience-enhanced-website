@@ -102,11 +102,13 @@
                 <% users.forEach(users => { %>
                 <li class="li_users">
                     <h2><%= users.name %></h2>
-
+                    <picture>
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>.webp" type="image/webp">
                     <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>"
                          alt="House Image" width="<%= users.width %>"
                          height=" <%= users.height %>" class="show_avatars"
                     >
+                    </picture>
                     <ul class="show_score_house__output_number">
 
                         <%- include('partials/showScore', {result: house}); -%>
