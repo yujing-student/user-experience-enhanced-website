@@ -264,7 +264,7 @@ header {
 .users__show_avatars {
     height: auto;
     max-width: 100%;
-    width: 10vh;
+    /*width: 10vh;*/
     object-fit: cover;
     /*aspect-ratio: 1 / 1;*/
 /*    dit gebruiken voor zelfde hoofte iames*/
@@ -548,7 +548,7 @@ input:focus {
     /*score*/
     .users__show_avatars {
 
-        width: 18vh;
+        /*width: 18vh;*/
 
 
     }
