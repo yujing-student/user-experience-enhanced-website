@@ -12,10 +12,11 @@
                 <li class="users__li_lijst">
 
                     <picture>
-                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=avif" type="image/avif">
 
-                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar%>?width=600&height=400&fit=cover&format=webp" type="image/webp">
-
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar%>?width=600&height=400&fit=cover&format=webp"
+                                type="image/webp">
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=webp"
+                                type="image/avif">
 
                         <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover"
                              alt="House Image" width="<%= users.width %>"
@@ -47,13 +48,12 @@
                 <ul class="list_houses_grid__ul">
                     <li>
                         <picture>
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.webp" type="image/webp"
-
-                            >   <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>.avif" type="image/avif"
-
-                            >
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>?width=600&height=400&fit=cover&format=webp"
+                                    type="image/webp">
+                            <source srcset="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>?width=600&height=400&fit=cover&format=webp"
+                                    type="image/avif">
                         <img class="list_houses_grid__image"
-                             src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>"
+                             src="https://fdnd-agency.directus.app/assets/<%= house.f_houses_id.poster_image.id %>?width=600&height=400&fit=cover"
                              width="<%= house.f_houses_id.poster_image.width %>"
                              height="<%= house.f_houses_id.poster_image.height %>"
                              alt="image house">
