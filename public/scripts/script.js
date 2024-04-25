@@ -83,13 +83,6 @@ function inputnumbers () {
             // Als URL gebruiken we this.action
             // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 
-            const button = document.querySelector(".form_inputfields__save_buton");
-            const scoreElement = document.querySelector(".output_other_users");
-            button.addEventListener("click", function(event) {
-                event.preventDefault()
-                scoreElement.scrollIntoView({ behavior: "smooth" });
-
-            })
             fetch(this.action, {
 
                 // Als method gebruiken we this.method (waarschijnlijk POST)
