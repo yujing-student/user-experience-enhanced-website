@@ -1,14 +1,13 @@
 
 
 
-function notes () {
+function inputnumbers () {
     // Selecteer alle bestelformulieren
+
     let show_notes_var = document.querySelectorAll('.section-give_notes__text-input-notes-form')
-//     input-notes-form__text-area-notes:
-// Loop door al die formulieren
-    show_notes_var.forEach(function(form) {
+    show_notes_var.forEach(function(form_notes) {
         // Luister naar het submit event
-        form.addEventListener('submit', function(event) {
+        form_notes.addEventListener('submit', function(event) {
             event.preventDefault()
             // Het this object refereert hier naar het formulier zelf
 
@@ -49,26 +48,19 @@ function notes () {
 
 
 
-                // Een eventuele loading state haal je hier ook weer weg
-            });
+            // Een eventuele loading state haal je hier ook weer weg
+        });
 
-            // Als alles gelukt is, voorkom dan de submit van de browser zelf
-            // Stel dat je hierboven een tikfout hebt gemaakt, of de browser ondersteunt
-            // een bepaalde feature hierboven niet (bijvoorbeeld FormData), dan krijg je
-            // een error en wordt de volgende regel nooit uitgevoerd. De browser valt dan
-            // automatisch terug naar de standaard POST, wat prima is.
+        // Als alles gelukt is, voorkom dan de submit van de browser zelf
+        // Stel dat je hierboven een tikfout hebt gemaakt, of de browser ondersteunt
+        // een bepaalde feature hierboven niet (bijvoorbeeld FormData), dan krijg je
+        // een error en wordt de volgende regel nooit uitgevoerd. De browser valt dan
+        // automatisch terug naar de standaard POST, wat prima is.
 
-        })
-
-}
-notes()
-
-
-
-function inputnumbers () {
-    // Selecteer alle bestelformulieren
+    })
     let form_numbers_score = document.querySelectorAll('.score_field_numbers__form_inputfields')
 // Loop door al die formulieren
+
     form_numbers_score.forEach(function(form) {
         // Luister naar het submit event
         // const div = document.querySelector(".loader");
