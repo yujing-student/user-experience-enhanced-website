@@ -146,7 +146,6 @@ app.post('/score/:id', async function (request, response) {
     message_score_page_data.push(message_score_page);
 
 
-
     // hier haal je de nieuwe data op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
         .then(async (apiResponse) => {
@@ -160,7 +159,6 @@ app.post('/score/:id', async function (request, response) {
 
 
 
-            const text_succes = 'uw huis is toegevoegd'
             if (request.body.enhanced) {
                 response.render('partials/showScore', {result: apiResponse,
 
@@ -173,8 +171,7 @@ app.post('/score/:id', async function (request, response) {
                         ligging: ligging,
                         oppervlakte: oppervlakte,
                         notities: message_score_page_data,
-                        text_succes: text_succes,
-                        usres:users_image
+                        usres:users_image,
 
                         //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
                     }

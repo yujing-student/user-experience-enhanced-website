@@ -6,7 +6,9 @@
 html {
     scroll-behavior: smooth;
 }
-
+body {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0 auto;
     font-family: proximanova, sans-serif;
@@ -341,6 +343,9 @@ header {
     font-size: 1.3em;
     width: 6em;
     text-decoration: none;
+}
+.message{
+    background-color: green;
 }
 
 .section-give_notes__text-input-notes-form {

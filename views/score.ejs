@@ -56,10 +56,15 @@
                 <label for="tuin" class="form_inputfields__label-inputfield"><span>tuin:</span>
                     <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0 " required>
                 </label>
-                <button type="submit" class="form_inputfields__save_buton likes">Opslaan</button>
+                <a href="#score_numbers">   <button type="submit" class="form_inputfields__save_buton" >Opslaan</button></a>
 <!--                <div class="loader hide_loader"></div>-->
 
             </form>
+
+
+            <p class="succes_client"></p>
+
+
         </section>
         <section class="section-give_notes">
             <h2 class="">Notities</h2>
@@ -70,14 +75,14 @@
                 <label for="bericht" aria-label="laat uw noitite achter">
                     <textarea id="note-area" name="input-notes-form__text-area-notes"></textarea>
                 </label>
-                <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
+             <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
 
             </form>
 
         </section>
 
         <section class="show_score_house">
-            <h2 class="">Beoordeling</h2>
+            <h2 class="" id="score_numbers">Beoordeling</h2>
 
             <div class=" show_score_house__output_number">
                 <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
