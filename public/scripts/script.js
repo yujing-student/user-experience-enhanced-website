@@ -4,11 +4,12 @@
 function notes () {
     // Selecteer alle bestelformulieren
     let show_notes_var = document.querySelectorAll('.section-give_notes__text-input-notes-form')
+//     input-notes-form__text-area-notes:
 // Loop door al die formulieren
     show_notes_var.forEach(function(form) {
         // Luister naar het submit event
         form.addEventListener('submit', function(event) {
-
+            event.preventDefault()
             // Het this object refereert hier naar het formulier zelf
 
             // Lees de data van het formulier in
@@ -41,8 +42,10 @@ function notes () {
 
             }).then(function(responseHTML) {
                 // En de HTML kunnen we gebruiken om onze DOM aan te passen
+                const notes = document.querySelector('.show_notes');
                 document.querySelector('.show_notes').innerHTML = responseHTML
-
+                notes.scrollIntoView({ behavior: 'smooth' });
+            });
 
 
 
@@ -54,9 +57,9 @@ function notes () {
             // een bepaalde feature hierboven niet (bijvoorbeeld FormData), dan krijg je
             // een error en wordt de volgende regel nooit uitgevoerd. De browser valt dan
             // automatisch terug naar de standaard POST, wat prima is.
-            event.preventDefault()
+
         })
-    })
+
 }
 notes()
 
@@ -130,15 +133,37 @@ function inputnumbers () {
 inputnumbers();
 
 
-// dit werkt niet
-function succes(){
-     const button = document.querySelector(".form_inputfields__save_buton");
-     const scoreElement = document.querySelector(".output_other_users");
-     button.addEventListener("click", function(event) {
-         event.preventDefault()
-         scoreElement.scrollIntoView({ behavior: "smooth" });
+function hambuerg() {
 
-     })
+        const navList = document.querySelector('.menu-nav_ul_li');
+        const menuToggle = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('show_menu'); // Assuming you have a CSS class 'show' to display the navigation
+    });
+
+
+
+
 }
 
-// succes()
+hambuerg()
+
+function toggle_show_notes_var() {
+
+        const navList = document.querySelector('.ul_list_navigation');
+        const menuToggle = document.getElementById('menu');
+        let isMenuOpen = false; // Flag to track menu state
+
+        menuToggle.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen; // Toggle menu state on click
+
+        // Show/hide navigation list items based on menu state
+        navList.classList.toggle('show'); // Assuming you have a CSS class 'show' to remove the translateX
+
+    });
+
+
+}
+
+toggle_show_notes_var()

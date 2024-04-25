@@ -56,7 +56,7 @@
                 <label for="tuin" class="form_inputfields__label-inputfield"><span>tuin:</span>
                     <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0 " required>
                 </label>
-                <a href="#score_numbers">   <button type="submit" class="form_inputfields__save_buton" >Opslaan</button></a>
+                <button type="submit" class="form_inputfields__save_buton" >Opslaan</button>
 <!--                <div class="loader hide_loader"></div>-->
 
             </form>
@@ -82,7 +82,7 @@
         </section>
 
         <section class="show_score_house">
-            <h2 class="" id="score_numbers">Beoordeling</h2>
+            <h2 class="" >Beoordeling</h2>
 
             <div class=" show_score_house__output_number">
                 <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
@@ -98,7 +98,7 @@
 
                 <% if (notities.length > 0) { %>
                     <% notities.forEach(message =>{ %>
-                        <li class=""> : <%= message %></li>
+                        <li class=""><%= message %></li>
                     <% }) %>
                 <% } else { %>
                     <li class="">U hebt geen notitie ingevuld</li>
