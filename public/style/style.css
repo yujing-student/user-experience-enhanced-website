@@ -43,6 +43,9 @@ a {
     text-decoration: none;
 
 }
+a:hover{
+    text-decoration: underline;
+}
 
 /*read the code from above to under as it is in the index ejs*/
 main {
@@ -58,8 +61,9 @@ main {
 
 .hr_bottom {
     border-bottom: solid var(--gray);
-    margin-bottom: 2em;
-    padding-bottom: 1em;
+    padding: 0 0 1em 0;
+    margin: 0 0 2em 0;
+
 }
 
 .article_link-to-list, .form_inputfields__save_buton, .names-of-houses_houses__button:hover {
@@ -86,15 +90,17 @@ header {
 
 .menu-nav_ul {
     /*display: none;*/
-    padding-left: 4em;
+    /*padding-left: 4em;*/
+    padding: 0 0em 0 4em;
 }
 
 .menu-nav_ul_li {
-    margin-top: 1.8em;
+    /*margin-top: 1.8em;*/
+    margin:1.8em 0 0 0;
     /*transform: translateX(-100%);*/
     /*display: none;*/
 }
-
+/*hamburger menu*/
 @media (width <= 700px) {
     .ul_list_navigation{
         display: none;
@@ -108,6 +114,21 @@ header {
         display: block;
     }
 
+    .ul_list_navigation {
+        /*margin-top: 1.8em;*/
+        margin:1.8em 0 0 0;
+        transform: translateX(-100%);
+    }
+
+    .ul_list_navigation {
+        transform: translateX(0);
+    }
+    .no-js {
+
+        display: block;   /* Set display to block for visibility */
+    }
+
+
 }
 .menu-nav_ul_li_link {
     color: var(--black);
@@ -115,12 +136,14 @@ header {
 }
 
 .menu_nav_ul_li_button-login-icon {
-    margin-top: -0.5em;
+
+    margin:-0.5em 0 0 0;
 }
 
 .menu_nav_hamburger-icon {
     background-color: var(--orange);
-    margin-top: 2em;
+    /*margin-top: 2em;*/
+    margin:2em 0 0 0;
     display: flex;
     border: none;
 }
@@ -145,8 +168,9 @@ header {
 }
 
 .names-of-houses__li_position_items_text {
-    margin-left: 2em;
-    margin-right: 1em;
+    /*margin-left: 2em;*/
+    /*margin-right: 1em;*/
+    margin:0 1em 0 2em;
 
 }
 
@@ -210,23 +234,28 @@ header {
 
 /*lijsten page*/
 
-.ul-users {
-    background-color: var(--ligthblue);
+.ul-users_lijst {
+    /*background-color: var(--ligthblue);*/
     display: flex;
     flex-direction: column;
     row-gap: 1em;
-    padding: 2em;
+    /*padding: 2em;*/
+    padding: 0;
+    margin: 0 2em 0 0;
+    max-width: 26vh;
 }
 
-.users__li {
-    margin-right: 2em;
-
+.users__li_lijst {
+    background-color: var(--ligthblue);
+padding: 2em;
 }
 
 .users__show_avatars {
     height: auto;
     max-width: 100%;
-    width: 200px;
+    width: 10vh;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
 
 .description-section {
@@ -300,8 +329,8 @@ header {
 .section_house_details {
     margin-top: 2em;
     background-color: var(--ligthblue);
-    padding: 1em;
-    max-width: 76vh;
+    padding: 2em;
+    max-width: 66vh;
 }
 
 .house_details_img__image_house_score {
@@ -332,15 +361,29 @@ header {
     /*grid-template-columns:repeat(auto-fit,32em)*/
 }
 
-.section_score_field_numbers, .section-give_notes, .show_score_house, .input_notes, .li_users {
+.section_score_field_numbers, .section-give_notes, .show_score_house, .input_notes {
     background-color: var(--ligthblue);
-    margin-bottom: 2em;
-    padding: 1em;
-    margin-right: 4em;
+    padding: 1em 2em 2em 2em;
+    margin: 0 4em 2em 0;
+
+
+}
+.li_users{
+    background-color: var(--ligthblue);
+
+
+    padding: 2em 3em;
+    margin: 0 3em 3em 0;
+
 }
 
 .show_notes,.show_score_house__output_number {
     padding: 0;
+}
+.show_score_house__output_number{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-right: 2em;
 }
 .score_field_numbers__form_inputfields {
     display: grid;
@@ -352,7 +395,9 @@ header {
     display: grid;
     grid-template-columns: 6em 8em;
 }
-
+input:focus {
+    background-color: var(--orange);
+}
 .form_inputfields__save_buton {
     background-color: var(--orange);
     border: none;
@@ -378,7 +423,7 @@ header {
 
 .score_others_grid_container_title {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 25em));
     /*grid-template-columns: repeat(auto-fit, 20em);*/
     padding: 0;
     margin-left: 0;
@@ -484,6 +529,23 @@ header {
 
     }
 
+    /*score*/
+    .users__show_avatars {
+
+        width: 18vh;
+    }
+
+    .li_users{
+        /*padding-left: 4em;*/
+        /*padding: 2em;*/
+        background-color: var(--ligthblue);
+        margin: 2em;
+        padding-left: 4.2em
+    ;
+        padding-top: 2em;
+    }
+
+
 
 }
 
@@ -492,17 +554,17 @@ header {
 
 
     /*lijsten*/
-    .ul-users {
+    .ul-users_lijst {
         display: grid;
         /*grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));*/
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         max-width: 128em;
-        column-gap: 1em;
-        background-color: var(--ligthblue);
-        padding: 2em;
+        column-gap: 3em;
+
     }
 
     /*score pagina*/
+
     .score_field_numbers__form_inputfields {
         grid-template-columns: 17em;
     }

@@ -133,33 +133,16 @@ function inputnumbers () {
 inputnumbers();
 
 
-function hambuerg() {
-
-        const navList = document.querySelector('.menu-nav_ul_li');
-        const menuToggle = document.getElementById('menu');
-
-        menuToggle.addEventListener('click', () => {
-        navList.classList.toggle('show_menu'); // Assuming you have a CSS class 'show' to display the navigation
-    });
-
-
-
-
-}
-
-hambuerg()
-
 function toggle_show_notes_var() {
 
         const navList = document.querySelector('.ul_list_navigation');
         const menuToggle = document.getElementById('menu');
-        let isMenuOpen = false; // Flag to track menu state
+        let isMenuOpen = false;
 
         menuToggle.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen; // Toggle menu state on click
+        isMenuOpen = !isMenuOpen;
 
-        // Show/hide navigation list items based on menu state
-        navList.classList.toggle('show'); // Assuming you have a CSS class 'show' to remove the translateX
+        navList.classList.toggle('show');
 
     });
 
