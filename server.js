@@ -7,7 +7,7 @@ import fetchJson from './helpers/fetch-json.js'
 
 const app = express()
 
-// file:///D:/OneDrive%20-%20HvA/jaar1/periode3/sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
+// sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf
 const favorite_houses = await fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
 const feedback = await fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*`)
 const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?fields=*.*.`)
