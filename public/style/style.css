@@ -403,11 +403,11 @@ header {
 .show_notes, .show_score_house__output_number {
     padding: 0;
 }
-
-.show_score_house__output_number {
-
-    padding: 2em 2em 2em 0;
+.show_user_score{
+    padding: 0;
 }
+
+
 
 .score_field_numbers__form_inputfields {
     display: grid;
@@ -453,7 +453,7 @@ input:focus {
     grid-template-columns: repeat(auto-fit, minmax(300px, 25em));
     /*grid-template-columns: repeat(auto-fit, 20em);*/
     padding: 0;
-    margin-left: 0;
+    margin: 0 0 0 -2em;
 
 }
 
@@ -463,6 +463,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     padding: 0;
+    margin-top: 1em;
 }
 
 
@@ -558,7 +559,7 @@ input:focus {
         /*padding: 2em;*/
         background-color: var(--ligthblue);
         margin: 2em;
-        padding: 2em 3em 0 4.2em;
+        /*padding: 2em 3em 0 4.2em;*/
     }
 
 
@@ -586,7 +587,7 @@ input:focus {
     .score_others_grid_container {
         display: grid;
         /*margin-top: 4em;*/
-        margin: 4em 0 0 0;
+        /*margin: 4em 0 0 0;*/
 
     }
 

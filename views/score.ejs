@@ -91,7 +91,39 @@
 
             <div class=" show_score_house__output_number">
                 <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
-                <%- include('partials/showScore', {result: house, url: "house"}); %>
+                <ul class="show_user_score">
+                    <% if (algemeen.length > 0) { %>
+                        <% algemeen.forEach(number =>{ %>
+                            <li class="show_notes__user"> algemeen: <%= number %></li>
+                        <% }) %>
+                    <% } else { %>
+                        <li class="show_notes__user">U hebt nog geen score op gegeven</li>
+                    <% } %>
+
+                    <% if (keuken.length > 0) { %>
+                        <% keuken.forEach(kitchen_number =>{ %>
+                            <li class="show_notes__user"> keuken: <%= kitchen_number %></li>
+                        <% }) %>
+                    <% } else { %>
+                            <li class="show_notes__user"> </li>
+                    <% } %>
+
+                    <% if (badkamer.length > 0) { %>
+                        <% badkamer.forEach(kitchen_number =>{ %>
+                            <li class="show_notes__user"> Badkamer: <%= kitchen_number %></li>
+                        <% }) %>
+                    <% } else { %>
+                        <li class="show_notes__user"> </li>
+                    <% } %>
+
+                    <% if (tuin.length > 0) { %>
+                        <% tuin.forEach(kitchen_number =>{ %>
+                            <li class="show_notes__user"> tuin: <%= kitchen_number %></li>
+                        <% }) %>
+                    <% } else { %>
+                        <li class="show_notes__user"></li>
+                    <% } %>
+                </ul>
 
             </div>
         </section>
@@ -100,8 +132,7 @@
         <section class="input_notes">
             <h2 class="">Uw notities</h2>
             <ul class="show_notes">
-
-                <% if (notities.length > 0) { %>
+                <% if (notities) { %>
                     <% notities.forEach(message =>{ %>
                         <li class=""><%= message %></li>
                     <% }) %>
