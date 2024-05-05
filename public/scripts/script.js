@@ -1,13 +1,10 @@
-
-
-
-function inputnumbers () {
+function inputnumbers() {
     // Selecteer alle bestelformulieren
 
     let show_notes_var = document.querySelectorAll('.section-give_notes__text-input-notes-form')
-    show_notes_var.forEach(function(form_notes) {
+    show_notes_var.forEach(function (form_notes) {
         // Luister naar het submit event
-        form_notes.addEventListener('submit', function(event) {
+        form_notes.addEventListener('submit', function (event) {
             event.preventDefault()
             // Het this object refereert hier naar het formulier zelf
 
@@ -34,18 +31,17 @@ function inputnumbers () {
                 // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
                 body: new URLSearchParams(data)
 
-            }).then(function(response) {
+            }).then(function (response) {
                 // Als de server een antwoord geeft, krijgen we een stream terug
                 // We willen hiervan de text gebruiken, wat in dit geval HTML teruggeeft
                 return response.text()
 
-            }).then(function(responseHTML) {
+            }).then(function (responseHTML) {
                 // En de HTML kunnen we gebruiken om onze DOM aan te passen
                 const notes = document.querySelector('.show_notes');
                 document.querySelector('.show_notes').innerHTML = responseHTML
-                notes.scrollIntoView({ behavior: 'smooth' });
+                notes.scrollIntoView({behavior: 'smooth'});
             });
-
 
 
             // Een eventuele loading state haal je hier ook weer weg
@@ -61,10 +57,10 @@ function inputnumbers () {
     let form_numbers_score = document.querySelectorAll('.score_field_numbers__form_inputfields')
 // Loop door al die formulieren
 
-    form_numbers_score.forEach(function(form) {
+    form_numbers_score.forEach(function (form) {
         // Luister naar het submit event
         // const div = document.querySelector(".loader");
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
 
             // Het this object refereert hier naar het formulier zelf
 
@@ -92,15 +88,15 @@ function inputnumbers () {
                 // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
                 body: new URLSearchParams(data)
 
-            }).then(function(response) {
+            }).then(function (response) {
                 // Als de server een antwoord geeft, krijgen we een stream terug
                 // We willen hiervan de text gebruiken, wat in dit geval HTML teruggeeft
                 return response.text()
 
-            }).then(function(responseHTML) {
+            }).then(function (responseHTML) {
                 const scoreNumbersElement = document.querySelector('.show_score_house__output_number');
-             document.querySelector('.show_score_house__output_number').innerHTML = responseHTML
-                scoreNumbersElement.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.show_score_house__output_number').innerHTML = responseHTML
+                scoreNumbersElement.scrollIntoView({behavior: 'smooth'});
             });
 
 
@@ -120,11 +116,11 @@ inputnumbers();
 
 function toggle_show_notes_var() {
 
-        const navList = document.querySelector('.ul_list_navigation');
-        const menuToggle = document.getElementById('menu');
-        let isMenuOpen = false;
+    const navList = document.querySelector('.ul_list_navigation');
+    const menuToggle = document.getElementById('menu');
+    let isMenuOpen = false;
 
-        menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
 
         navList.classList.toggle('show');

@@ -267,7 +267,7 @@ header {
     /*width: 10vh;*/
     object-fit: cover;
     /*aspect-ratio: 1 / 1;*/
-/*    dit gebruiken voor zelfde hoofte iames*/
+    /*    dit gebruiken voor zelfde hoofte iames*/
 }
 
 .description-section {
@@ -403,10 +403,10 @@ header {
 .show_notes, .show_score_house__output_number {
     padding: 0;
 }
-.show_user_score{
+
+.show_user_score {
     padding: 0;
 }
-
 
 
 .score_field_numbers__form_inputfields {

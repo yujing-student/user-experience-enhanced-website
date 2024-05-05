@@ -13,16 +13,13 @@ const baseUlr = fetchJson('https://fdnd-agency.directus.app/items/')
 
 
 // here making arrays because i don't undersstand how to push data to the databse
-const algemeen = []
-const keuken = []
-const badkamer = []
-const tuin = []
-const prijs = []
-const ligging = []
-const oppervlakte = []
+const general = []
+const kitchen = []
+const bathroom = []
+const garden = []
 // this is the array for the notes
-const message_score_page_data = [];
 
+const message_score_page_data = [];
 // dit staat hier om de gebruikers op te halen
 const users_image = users.data.map(avatar => {
     console.log(avatar.avatar.id);
@@ -100,13 +97,10 @@ app.get('/score/:id', function (request, response) {
             // render the data with the arrays
             response.render('score', {
                 house: data,
-                algemeen: algemeen,
-                keuken: keuken,
-                badkamer: badkamer,
-                tuin: tuin,
-                prijs: prijs,
-                ligging: ligging,
-                oppervlakte: oppervlakte,
+                algemeen: general,
+                keuken: kitchen,
+                badkamer: bathroom,
+                tuin: garden,
                 notities: message_score_page_data,
                 users:users_image
 
@@ -119,12 +113,19 @@ app.get('/score/:id', function (request, response) {
 app.post('/score/:id', async function (request, response) {
 
     //add data to the array
-    algemeen.push( request.body.algemeenNumber);
-    keuken.push(request.body.keukenNumber);
-    badkamer.push( request.body.badkamerNumber);
-    tuin.push(request.body.tuinNumber);
+    general.push( request.body.algemeenNumber);
+    kitchen.push(request.body.keukenNumber);
+    bathroom.push( request.body.badkamerNumber);
+    garden.push(request.body.tuinNumber);
     message_score_page_data.push( request.body.notes_shown);
-
+    
+    const newScore = {
+        general: request.body.algemeenNumber,
+        kitchen: request.body.keukenNumber,
+        bathroom: request.body.badkamerNumber,
+        garden: request.body.tuinNumber,
+        notes: request.body.notes_shown, // Assuming notes are stored in notes field
+    };
 
     //get the data
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
@@ -134,13 +135,10 @@ app.post('/score/:id', async function (request, response) {
                 response.render('partials/showScore', {result: apiResponse,
 
 
-                        algemeen: algemeen,
-                        keuken: keuken,
-                        badkamer: badkamer,
-                        tuin: tuin,
-                        prijs: prijs,
-                        ligging: ligging,
-                        oppervlakte: oppervlakte,
+                        algemeen: general,
+                        keuken: kitchen,
+                        badkamer: bathroom,
+                        tuin: garden,
                         notities: message_score_page_data,
                         usres:users_image,
 
