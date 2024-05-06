@@ -39,7 +39,6 @@
             <h2>score</h2>
             <p>Geef een score over het huis van 0 tot en met 5.</p>
 
-
             <form method="POST" action="/score/<%= house.id %>" class="score_field_numbers__form_inputfields">
                 <input type="hidden" value="<%= house.id %>" name="actie" required>
                 <!--                inputfields niet aanpassen vanwege de client side javascript-->
@@ -60,9 +59,9 @@
                     <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0 " required>
                 </label>
                 <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
-                <!--                <div class="loader hide_loader"></div>-->
 
             </form>
+            <p class="loading-state"></p>
 
 
             <p class="succes_client"></p>
@@ -74,22 +73,22 @@
             <p>Hier kunt u een notitie achterlaten.</p>
 
 <!--            de action route moet ergens anders 2 dubbele actions is niet handig-->
-            <form method="" action="" class="section-give_notes__text-input-notes-form">
+            <form method="post" action="/score/<%= house.id %>" class="section-give_notes__text-input-notes-form">
                 <input type="hidden" value="<%= house.id %>">
                 <label for="bericht" aria-label="laat uw noitite achter">
-                    <textarea id="note-area" name="input-notes-form__text-area-notes"></textarea>
+                    <textarea id="note-area" name="notes_shown"></textarea>
                 </label>
                 <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
 
             </form>
+            <p class="loading-state"></p>
 
         </section>
 
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
-            <div class="loader loading"></div>
             <div class=" show_score_house__output_number">
-                <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
+<!--             this ul must be here becuase it has other css than the ul of the partial-->
                 <ul class="show_user_score">
                     <% if (algemeen.length > 0) { %>
                         <% algemeen.forEach(number =>{ %>
@@ -130,10 +129,7 @@
 
         <section class="input_notes">
             <h2 class="">Uw notities</h2>
-            <ul class="show_notes">
-
-
-            </ul>
+            <%- include('partials/showNotes', {result: house}); -%>
         </section>
 
     </div>
@@ -157,6 +153,7 @@
                         </picture>
                         <ul class="show_score_house__output_number">
 
+<!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
                             <%- include('partials/showScore', {result: house}); -%>
 
                         </ul>

@@ -117,37 +117,55 @@ app.post('/score/:id', async function (request, response) {
     kitchen.push(request.body.keukenNumber);
     bathroom.push( request.body.badkamerNumber);
     garden.push(request.body.tuinNumber);
-
-
+    // message is the notes
     message_score_page_data.push( request.body.notes_shown);
     
 
 
-    //get the data
+    //get the data and fix duplciate code for notes
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
         .then(async (apiResponse) => {
-            // if the enhanced is true do this
+            // if the enhanced is true do this en the render is the partial
             if (request.body.enhanced) {
                 response.render('partials/showScore', {result: apiResponse,
-
 
                         algemeen: general,
                         keuken: kitchen,
                         badkamer: bathroom,
                         tuin: garden,
-                        notities: message_score_page_data,
-                        usres:users_image,
+
 
                         //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
                     }
                 )
-            } else {
-                response.redirect(303, '/score/' + request.params.id)
             }
+            // the else is commented because if it is not working the full page is show in the beoordeling
+
+            // else {
+            //     response.redirect(303, '/score/' + request.params.id)
+            // }
+
+        })
+
+    // the if enhaced can not in the oter fetch so it needs to be seperated
+    fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
+        .then(async (apiResponse) => {
+            // if the enhanced is true do this
+            if (request.body.notesEnhanced) {
+                response.render('partials/showNotes', {result: apiResponse,
+                        notities: message_score_page_data,
+
+                        //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
+                    }
+                )
+            }
+
+            // else {
+            //     response.redirect(303, '/score/' + request.params.id)
+            // }
 
         })
 })
-
 // http://localhost:8000/test/35
 app.get('/test/:id', function (request, response) {
     const feedback =  fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
