@@ -3,17 +3,19 @@ toggle_show_notes_var()
 
 
 // user parameters for the forms that the code is dry
+// using this is neccessary because the 2 forms must have the exact same function
 FormsEnhanced('.score_field_numbers__form_inputfields',
     '.show_score_house__output_number',
-    'enhanced');
-FormsEnhanced('.section-give_notes__text-input-notes-form', '.show_notes', 'notesEnhanced');
+    'enhanced',
+    '.loading-state');
+FormsEnhanced('.section-give_notes__text-input-notes-form', '.show_notes', 'notesEnhanced','.loading-state');
 
 // here i define that this is the laoding state
 let loading_element = document.querySelector('.loading-state');
+// todo uitzoeken waarom de loading state met parameters niet werkt
 
 
-
-function FormsEnhanced(specificForm, ShowResultsData, enhancedName) {
+function FormsEnhanced(specificForm, ShowResultsData, enhancedName,loadingState) {
     // Selecteer alle formulieren
     let forms = document.querySelectorAll(specificForm);
 
@@ -63,8 +65,8 @@ function FormsEnhanced(specificForm, ShowResultsData, enhancedName) {
                     }
 
                     // Scroll naar de bijgewerkte pagina
-                    // const scoreNumbersElement = document.querySelector(ShowResultsData);
-                    // scoreNumbersElement.scrollIntoView({ behavior: 'smooth' });
+                    const scoreNumbersElement = document.querySelector(ShowResultsData);
+                    scoreNumbersElement.scrollIntoView({ behavior: 'smooth' });
                 });
 
             // Voorkom de standaard submit van de browser
@@ -85,7 +87,6 @@ function toggle_show_notes_var() {
 
     menuToggle.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
-
         navList.classList.toggle('show');
 
     });

@@ -64,15 +64,12 @@
             <p class="loading-state"></p>
 
 
-            <p class="succes_client"></p>
-
-
         </section>
         <section class="section-give_notes">
             <h2 class="">Notities</h2>
             <p>Hier kunt u een notitie achterlaten.</p>
 
-<!--            de action route moet ergens anders 2 dubbele actions is niet handig-->
+            <!--            de action route moet ergens anders 2 dubbele actions is niet handig-->
             <form method="post" action="/score/<%= house.id %>" class="section-give_notes__text-input-notes-form">
                 <input type="hidden" value="<%= house.id %>">
                 <label for="bericht" aria-label="laat uw noitite achter">
@@ -88,7 +85,7 @@
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
             <div class=" show_score_house__output_number">
-<!--             this ul must be here becuase it has other css than the ul of the partial-->
+                <!--             this ul must be here becuase it has other css than the ul of the partial-->
                 <ul class="show_user_score">
                     <% if (algemeen.length > 0) { %>
                         <% algemeen.forEach(number =>{ %>
@@ -153,7 +150,7 @@
                         </picture>
                         <ul class="show_score_house__output_number">
 
-<!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
+                            <!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
                             <%- include('partials/showScore', {result: house}); -%>
 
                         </ul>

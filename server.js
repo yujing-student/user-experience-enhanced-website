@@ -18,9 +18,10 @@ const kitchen = []
 const bathroom = []
 const garden = []
 // this is the array for the notes
-
 const message_score_page_data = [];
-// dit staat hier om de gebruikers op te halen
+
+
+// this is neccessary for getting the users images
 const users_image = users.data.map(avatar => {
     console.log(avatar.avatar.id);
     return {
@@ -31,17 +32,26 @@ const users_image = users.data.map(avatar => {
 
     };
 });
-// Stel ejs in als template engine
-app.set('view engine', 'ejs')
 // use ejs as view engine
-// Stel de map met ejs templates in
-app.set('views', './views')
+app.set('view engine', 'ejs')
+
 // use this directory for the ejs files
+app.set('views', './views')
 
 // use public directry for  the stylesheets and javascript and images
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanwege middelware zodat de data leesbaar gemaakt word
+// Stel het poortnummer in waar express op moet gaan luisteren
+app.set('port', process.env.PORT || 8000)
 
+
+// Start express op, haal daarbij het zojuist ingestelde poortnummer op
+app.listen(app.get('port'), function () {
+    // Toon een bericht in de console en geef het poortnummer door
+    console.log(`Application started on http://localhost:${app.get('port')}`)
+})
+
+// setups of the routes
 app.get('/', async function (request, response) {
     fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
         // fetchJson(`${baseUlr}f_list/?fields=*.*.*.*`)
@@ -67,9 +77,6 @@ app.get('/', async function (request, response) {
 
 app.get('/lijsten/:id', async function (request, response) {
     fetchJson(`https://fdnd-agency.directus.app/items/f_list/${request.params.id}?fields=*.*.*.*`)
-        // hier moet apidata.data wel staan vanwege de lijst ejs de huizen zijn een array met daarin objecten en die word ook zo
-        //aangeroepen in de ejs dus dit kan niet hetzelfde als bij de score route score
-
         // .then is used after the fetchjosn is succesful
         .then(lists => {
             if (lists.data) {//check if data exist
@@ -92,7 +99,7 @@ app.get('/score/:id', function (request, response) {
     // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*,image.id,image.height,image.width`)
 
-        .then(async ({ data }) => {
+        .then(async ({data}) => {
 
             // render the data with the arrays
             response.render('score', {
@@ -102,7 +109,7 @@ app.get('/score/:id', function (request, response) {
                 badkamer: bathroom,
                 tuin: garden,
                 notities: message_score_page_data,
-                users:users_image
+                users: users_image
 
 
             })
@@ -113,13 +120,12 @@ app.get('/score/:id', function (request, response) {
 app.post('/score/:id', async function (request, response) {
 
     //add data to the array
-    general.push( request.body.algemeenNumber);
+    general.push(request.body.algemeenNumber);
     kitchen.push(request.body.keukenNumber);
-    bathroom.push( request.body.badkamerNumber);
+    bathroom.push(request.body.badkamerNumber);
     garden.push(request.body.tuinNumber);
     // message is the notes
-    message_score_page_data.push( request.body.notes_shown);
-    
+    message_score_page_data.push(request.body.notes_shown);
 
 
     //get the data and fix duplciate code for notes
@@ -127,8 +133,8 @@ app.post('/score/:id', async function (request, response) {
         .then(async (apiResponse) => {
             // if the enhanced is true do this en the render is the partial
             if (request.body.enhanced) {
-                response.render('partials/showScore', {result: apiResponse,
-
+                response.render('partials/showScore', {
+                        result: apiResponse,
                         algemeen: general,
                         keuken: kitchen,
                         badkamer: bathroom,
@@ -152,28 +158,36 @@ app.post('/score/:id', async function (request, response) {
         .then(async (apiResponse) => {
             // if the enhanced is true do this
             if (request.body.notesEnhanced) {
-                response.render('partials/showNotes', {result: apiResponse,
+                response.render('partials/showNotes', {
+                        result: apiResponse,
                         notities: message_score_page_data,
 
                         //     todo hier nog een repsonse.bdy met tekst 'uw huis is tegevoegd'
                     }
                 )
             }
-
+            // the else is commented because if it is not working the full page is show in the notities
             // else {
             //     response.redirect(303, '/score/' + request.params.id)
             // }
 
         })
 })
+
+
+
+
+
 // http://localhost:8000/test/35
+// this route is a test route so that i can figure out how i can post data to the databse and show the data
+// it is not finished
 app.get('/test/:id', function (request, response) {
-    const feedback =  fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
+    const feedback = fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
 
-    const feedbackUrl = `https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`;
-    const houseUrl = `https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`;
+    const feedbackUrl = `https://fdnd-agency.directus.app/items/f_feedback/?fields=`;
+    const houseUrl = `https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*`;
 
-
+    // use a promise.all because the tables are not connected to each other
     Promise.all([
         fetchJson(feedbackUrl),
         fetchJson(houseUrl)
@@ -202,24 +216,25 @@ app.get('/test/:id', function (request, response) {
                 feedback: feedback[0],
                 rating: feedback[0].data[2].rating,//de rating klopt bij het huis maar is nu handmatig gedaan
                 users_image: users_image,
-                notities:feedback[0].data[2].note
+                notities: feedback[0].data[2].note
             });
         })
 })
 
-
+// this route is a test route so that i can figure out how i can post data to the databse and show the data
+// it is not finished
 app.post('/test/:id', async function (request, response) {
-//dit is het lege object
+//this is the empty object
 
     const newScore = {
         general: request.body.algemeenNumber,
         kitchen: request.body.keukenNumber,
         bathroom: request.body.badkamerNumber,
         garden: request.body.tuinNumber,
-        new:request.body.new,
+        new: request.body.new,
     };
-    const note = {note:request.body.note}
-// Make the POST request using the requestBody
+    const note = {note: request.body.note}
+// make the post route
     fetch(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`, {
         method: 'POST',
         headers: {
@@ -240,16 +255,3 @@ app.post('/test/:id', async function (request, response) {
 })
 
 //
-
-// Stel het poortnummer in waar express op moet gaan luisteren
-app.set('port', process.env.PORT || 8000)
-
-// todo de style en navbar en deetailpage moeten angelopen worden op onnodige code en in 1 volgorde gezet worden
-
-
-// Start express op, haal daarbij het zojuist ingestelde poortnummer op
-app.listen(app.get('port'), function () {
-    // Toon een bericht in de console en geef het poortnummer door
-    console.log(`Application started on http://localhost:${app.get('port')}`)
-})
-
