@@ -117,15 +117,11 @@ app.post('/score/:id', async function (request, response) {
     kitchen.push(request.body.keukenNumber);
     bathroom.push( request.body.badkamerNumber);
     garden.push(request.body.tuinNumber);
+
+
     message_score_page_data.push( request.body.notes_shown);
     
-    const newScore = {
-        general: request.body.algemeenNumber,
-        kitchen: request.body.keukenNumber,
-        bathroom: request.body.badkamerNumber,
-        garden: request.body.tuinNumber,
-        notes: request.body.notes_shown, // Assuming notes are stored in notes field
-    };
+
 
     //get the data
     fetchJson(`https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`)
@@ -152,6 +148,78 @@ app.post('/score/:id', async function (request, response) {
         })
 })
 
+// http://localhost:8000/test/35
+app.get('/test/:id', function (request, response) {
+    const feedback =  fetchJson(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`)
+
+    const feedbackUrl = `https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`;
+    const houseUrl = `https://fdnd-agency.directus.app/items/f_houses/${request.params.id}/?fields=*.*.*`;
+
+
+    Promise.all([
+        fetchJson(feedbackUrl),
+        fetchJson(houseUrl)
+    ])
+        .then(async (feedback) => {
+            const feedbackdetails = feedback[0]; // Assuming feedback is directly an array of objects
+            const house = feedback[1]; // Assuming house data is in the second response
+
+            //
+            // console.log(JSON.stringify(feedbackdetails))
+            // console.log(JSON.stringify(house))
+            //
+            // // console.log(feedback);
+            //
+            //
+            // console.log(feedback[0].data[0].id+'dit is het id');
+            // console.log(feedback[0].data[0].note+'dit is de notitie');
+            // console.log(feedback[0].data[0].rating.ligging+'dit is de beoordeling en house is een object met daarin weer keys en values')
+            // console.log(feedback[0].data[0].rating.algemeen+'dit is de beoordeling en house is een object met daarin weer keys en values')
+            //
+            // // feedback["1"].data.id
+            // // Render the data with the arrays
+            // console.log(JSON.stringify(feedback[0]))
+            response.render('test', {
+                house: feedback[1].data,
+                feedback: feedback[0],
+                rating: feedback[0].data[2].rating,//de rating klopt bij het huis maar is nu handmatig gedaan
+                users_image: users_image,
+                notities:feedback[0].data[2].note
+            });
+        })
+})
+
+
+app.post('/test/:id', async function (request, response) {
+//dit is het lege object
+
+    const newScore = {
+        general: request.body.algemeenNumber,
+        kitchen: request.body.keukenNumber,
+        bathroom: request.body.badkamerNumber,
+        garden: request.body.tuinNumber,
+        new:request.body.new,
+    };
+    const note = {note:request.body.note}
+// Make the POST request using the requestBody
+    fetch(`https://fdnd-agency.directus.app/items/f_feedback/?fields=*.*.*.*`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Set appropriate header
+        },
+        body: JSON.stringify({
+            rating: newScore,
+            note: note,
+        }),
+    })
+        .then(response => {
+            // Handle the response from the server
+            console.log('POST request response:', response);
+        })
+        .catch(error => {
+            console.error('Error making POST request:', error);
+        });
+})
 
 //
 

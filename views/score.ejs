@@ -73,7 +73,8 @@
             <h2 class="">Notities</h2>
             <p>Hier kunt u een notitie achterlaten.</p>
 
-            <form method="POST" action="/score/<%= house.id %>" class="section-give_notes__text-input-notes-form">
+<!--            de action route moet ergens anders 2 dubbele actions is niet handig-->
+            <form method="" action="" class="section-give_notes__text-input-notes-form">
                 <input type="hidden" value="<%= house.id %>">
                 <label for="bericht" aria-label="laat uw noitite achter">
                     <textarea id="note-area" name="input-notes-form__text-area-notes"></textarea>
@@ -86,7 +87,7 @@
 
         <section class="show_score_house">
             <h2 class="">Beoordeling</h2>
-
+            <div class="loader loading"></div>
             <div class=" show_score_house__output_number">
                 <!--            geen foreach loop omdat house objet is en geen array waar je door heen kan-->
                 <ul class="show_user_score">
@@ -130,13 +131,7 @@
         <section class="input_notes">
             <h2 class="">Uw notities</h2>
             <ul class="show_notes">
-                <% if (notities) { %>
-                    <% notities.forEach(message =>{ %>
-                        <li class=""><%= message %></li>
-                    <% }) %>
-                <% } else { %>
-                    <li class="">U hebt geen notitie ingevuld</li>
-                <% } %>
+
 
             </ul>
         </section>
