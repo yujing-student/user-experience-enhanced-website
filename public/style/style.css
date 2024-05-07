@@ -273,7 +273,7 @@ header {
 }
 
 .users__show_avatars {
-    height: auto;
+    height: 170px;
     max-width: 100%;
     /*width: 10vh;*/
     object-fit: cover;
