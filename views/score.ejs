@@ -2,9 +2,9 @@
 <main>
     <section>
         <h1 class="title_page">score</h1>
-        <p class="hr_bottom">Hier kunt u een score geven over het huis.</p>
+        <p class="hr_bottom_p">Hier kunt u een score geven over het huis.</p>
 
-        <ul class="section_house_details">
+        <ul class="ul_house_details">
 
             <% if (house.poster_image) { %>
             <li>
@@ -17,14 +17,14 @@
                     <img src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>?width=600&height=400&fit=cover"
                          width="<%= house.poster_image.width %>"
                          height="<%= house.poster_image.height %>"
-                         class="house_details_img__image_house_score"
+                         class="house_details_img__image"
                          alt="image-house">
                     <% } %>
                 </picture>
             </li>
             <li class="house_details__li"><%= house.street %> <%= house.house_nr %> </li>
             <li class=""><%= house.city %> <%= house.postal_code %></li>
-            <li class="house_detai__price_house">€<%= new Intl.NumberFormat("de-DE").format(house.price) %></li>
+            <li class="house_details_li__price_house">€<%= new Intl.NumberFormat("de-DE").format(house.price) %></li>
 
         </ul>
 
@@ -58,7 +58,7 @@
                 <label for="tuin" class="form_inputfields__label-inputfield"><span>tuin:</span>
                     <input type="number" id="tuin" name="tuinNumber" value="" placeholder="0 " required>
                 </label>
-                <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
+                <button type="submit" class="section-give_notese__buton">Opslaan</button>
 
             </form>
             <p class="loading-state"></p>
@@ -70,29 +70,29 @@
             <p>Hier kunt u een notitie achterlaten.</p>
 
             <!--            de action route moet ergens anders 2 dubbele actions is niet handig-->
-            <form method="post" action="/score/<%= house.id %>" class="section-give_notes__text-input-notes-form">
+            <form method="post" action="/score/<%= house.id %>" class="section-give_notes__form">
                 <input type="hidden" value="<%= house.id %>">
                 <label for="bericht" aria-label="laat uw noitite achter">
                     <textarea id="note-area" name="notes_shown"></textarea>
                 </label>
-                <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
+                <button type="submit" class="section-give_notese__buton">Opslaan</button>
 
             </form>
             <p class="loading-state"></p>
 
         </section>
 
-        <section class="show_score_house">
+        <section class="section_show_score_house">
             <h2 class="">Beoordeling</h2>
-            <div class=" show_score_house__output_number">
+            <div class=" div_show_score_house__output_number">
                 <!--             this ul must be here becuase it has other css than the ul of the partial-->
-                <ul class="show_user_score">
+                <ul class="show_user_score__ul">
                     <% if (algemeen.length > 0) { %>
                         <% algemeen.forEach(number =>{ %>
-                            <li class="show_notes__user"> algemeen: <%= number %></li>
+                            <li class="show_notes__user__li"> algemeen: <%= number %></li>
                         <% }) %>
                     <% } else { %>
-                        <li class="show_notes__user">U hebt nog geen score op gegeven</li>
+                        <li class="show_notes__user__li">U hebt nog geen score op gegeven</li>
                     <% } %>
 
                     <% if (keuken.length > 0) { %>
@@ -100,7 +100,7 @@
                             <li class="show_notes__user"> keuken: <%= kitchen_number %></li>
                         <% }) %>
                     <% } else { %>
-                        <li class="show_notes__user"></li>
+                        <li class="show_notes__user__li"></li>
                     <% } %>
 
                     <% if (badkamer.length > 0) { %>
@@ -133,11 +133,11 @@
 
 
     <div class="score_others_grid_container">
-        <h2 class="">Bekijk de beoordelingen van anderen</h2>
-        <section class="">
-            <ul class="score_others_grid_container_title">
+        <h2 class="score_otbers_grid_container__h2">Bekijk de beoordelingen van anderen</h2>
+
+            <ul class="score_others_grid_container__ul">
                 <% users.forEach(users => { %>
-                    <li class="li_users">
+                    <li class="score_others_grid_container__li_users">
                         <picture>
                             <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=webp"
                                     type="image/webp">
@@ -148,7 +148,7 @@
                                  height=" <%= users.height %>" class="users__show_avatars"
                             >
                         </picture>
-                        <ul class="show_score_house__output_number">
+                        <ul class="div_show_score_house__output_number">
 
                             <!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
                             <%- include('partials/showScore', {result: house}); -%>
@@ -159,7 +159,5 @@
 
             </ul>
 
-
-        </section>
     </div>
 </main>

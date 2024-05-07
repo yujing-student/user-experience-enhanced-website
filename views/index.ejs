@@ -3,7 +3,7 @@
 
     <section class="">
         <h1 class="title_page">Uw huizen lijsten</h1>
-        <p class="hr_bottom">Hier kunt u zien welke lijsten u deelt samen met anderen </p>
+        <p class="hr_bottom_p">Hier kunt u zien welke lijsten u deelt samen met anderen </p>
 
 
     </section>
@@ -28,24 +28,24 @@
 
 
                             <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=400&height=300&fit=cover"
-                                 alt="House Image" width="<%= list.houses_array[0].image.width %>"
+                                 alt="Image of the house" width="<%= list.houses_array[0].image.width %>"
                                  height=" <%= list.houses_array[0].image.height %>" class="names-of-houses__img"
                             >
                         </picture>
                     </li>
-                    <li class="names-of-houses__li_position_items_text">
+                    <li class="names-of-houses__li">
                         <a
                                 href="/lijsten/<%= list.id %>"
                                 class="names-of-houses__link_go_to_list"><%= list.title %>
                         </a>
                     </li>
-                    <li class=" names-of-houses__li_position_items_text">
+                    <li class=" names-of-houses__li">
                         Huizen: <%= list.houses_array.length %>
                     </li>
-                    <li class=" names-of-houses__li_position_items_text">
-                        <a href="/lijsten/<%= list.id %>" class="names-of-houses_link-to-list"
+                    <li class=" names-of-houses__li">
+                        <a href="/lijsten/<%= list.id %>" class=""
                            aria-label="ga naar deze lijst">
-                            <button type="button" class="names-of-houses_houses__button">Bekijk lijst
+                            <button type="button" class="names-of-houses__button">Bekijk lijst
                             </button>
                         </a>
                     </li>

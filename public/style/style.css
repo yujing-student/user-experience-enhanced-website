@@ -62,7 +62,7 @@ main {
     line-height: 1.5em;
 }
 
-.hr_bottom {
+.hr_bottom_p {
     border-bottom: solid var(--gray);
     padding: 0 0 1em 0;
     margin: 0 0 2em 0;
@@ -70,12 +70,23 @@ main {
 
 }
 
-.article_link-to-list, .form_inputfields__save_buton, .names-of-houses_houses__button:hover {
+/*.article_link-to-list*/
+.section-give_notese__buton, .names-of-houses__button:hover {
 
     text-decoration: underline;
 }
 
-.list_houes_grid__button, .form_inputfields__save_buton, .names-of-houses_houses__button:active {
+.list_houes_grid__button, .section-give_notese__buton, .names-of-houses__button:active {
+    transform: translateY(3px);
+    animation: bounce 0.8s ease-in-out 1;
+}
+
+.list_houes_grid__button :active {
+    transform: translateY(3px);
+    animation: bounce 0.8s ease-in-out 1;
+}
+
+.section-give_notese__buton:active {
     transform: translateY(3px);
     animation: bounce 0.8s ease-in-out 1;
 }
@@ -95,7 +106,7 @@ header {
 .menu-nav_ul {
     /*display: none;*/
     /*padding-left: 4em;*/
-    padding: 0 0em 0 4em;
+    padding: 0 0 0 4em;
 }
 
 .menu-nav_ul_li {
@@ -174,7 +185,7 @@ header {
     border: solid var(--gray);
 }
 
-.names-of-houses__li_position_items_text {
+.names-of-houses__li {
     /*margin-left: 2em;*/
     /*margin-right: 1em;*/
     margin: 0 1em 0 2em;
@@ -191,9 +202,9 @@ header {
     max-width: 100%;
 }
 
-.article_link-to-list {
-    color: var(--black);
-}
+/*.article_link-to-list {*/
+/*    color: var(--black);*/
+/*}*/
 
 
 @keyframes list_houes_grid__button {
@@ -233,7 +244,7 @@ header {
 }
 
 
-.names-of-houses_houses__button {
+.names-of-houses__button {
     width: 7em;
     background-color: var(--orange);
     border: none;
@@ -343,7 +354,7 @@ header {
 }
 
 /*score pagina*/
-.section_house_details {
+.ul_house_details {
     /*margin-top: 2em;*/
     margin: 2em 0 0 0;
     background-color: var(--ligthblue);
@@ -351,7 +362,7 @@ header {
     max-width: 66vh;
 }
 
-.house_details_img__image_house_score {
+.house_details_img__image {
     max-width: 100%;
     height: auto;
     /*aspect-ratio: 1/1;*/
@@ -370,7 +381,7 @@ header {
     margin: 0 0 0 1.5em;
 }
 
-.house_detai__price_house {
+.house_details_li__price_house {
     font-size: 1.2em;
 }
 
@@ -383,28 +394,30 @@ header {
     /*grid-template-columns:repeat(auto-fit,32em)*/
 }
 
-.section_score_field_numbers, .section-give_notes, .show_score_house, .input_notes {
+.section_score_field_numbers, .section-give_notes, .section_show_score_house, .input_notes {
     background-color: var(--ligthblue);
     padding: 1em 2em 2em 2em;
     margin: 0 4em 2em 0;
 
 
 }
-
-.li_users {
+.score_otbers_grid_container__h2{
+    margin: 1em 0 2em 0;
+}
+.score_others_grid_container__li_users {
     background-color: var(--ligthblue);
 
 
     padding: 2em 3em;
-    margin: 0 3em 3em 0;
+    margin: 0em 3em 3em 0;
 
 }
 
-.show_notes, .show_score_house__output_number {
+.show_notes, .div_show_score_house__output_number {
     padding: 0;
 }
 
-.show_user_score {
+.show_user_score__ul {
     padding: 0;
 }
 
@@ -424,7 +437,7 @@ input:focus {
     background-color: var(--orange);
 }
 
-.form_inputfields__save_buton {
+.section-give_notese__buton {
     background-color: var(--orange);
     border: none;
     font-size: 1.3em;
@@ -432,15 +445,26 @@ input:focus {
     text-decoration: none;
 }
 
-.message {
-    background-color: green;
-}
 
-.section-give_notes__text-input-notes-form {
+.section-give_notes__form {
     display: flex;
     flex-direction: column;
 }
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-right-color: orange;
+    animation: l2 1s infinite linear;
+}
 
+@keyframes l2 {
+    to {
+        transform: rotate(1turn)
+    }
+}
 #note-area {
     min-height: 100px;
     min-width: 100px;
@@ -448,16 +472,15 @@ input:focus {
     overflow: auto;
 }
 
-.score_others_grid_container_title {
+.score_others_grid_container__ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 25em));
     /*grid-template-columns: repeat(auto-fit, 20em);*/
-    padding: 0;
+    /*padding: 0;*/
     margin: 0 0 0 -2em;
 
 }
 
-/*todo de score pagina onnodige css weghalen en aanpassen naar database*/
 /*de partials*/
 .output_other_users {
     display: flex;
@@ -483,18 +506,15 @@ input:focus {
         display: none;
     }
 
-
-}
-
-@media only screen and (min-width: 700px) {
     .menu-nav_ul {
         column-gap: 2em;
         padding-left: 3em;
         margin-top: 1em;
 
     }
-}
 
+
+}
 
 /*huizenlijsten dus index*/
 
@@ -507,14 +527,14 @@ input:focus {
         grid-template-columns: repeat(auto-fit, 18em);
     }
 
-    .names-of-houses_houses__button {
+    .names-of-houses__button {
         width: 8em;
         font-size: 1.5em;
 
 
     }
 
-    /*    lijsten*/
+    /*    lijsten pagina*/
     .list_houses_grid {
         display: grid;
         gap: 3.5em;
@@ -533,6 +553,7 @@ input:focus {
 
 @media (width >= 600px) {
 
+    /*index*/
     .ol_names-of-houses {
         max-width: 86em;
     }
@@ -546,15 +567,16 @@ input:focus {
         margin: 2em 0 0 0;
     }
 
-    /*score*/
-    .users__show_avatars {
 
-        /*width: 18vh;*/
-
-
+    /*    score*/
+    .score_otbers_grid_container__h2{
+        margin: 0
+    }
+    .score_others_grid_container__ul {
+        padding: 0;
     }
 
-    .li_users {
+    .score_others_grid_container__li_users {
         /*padding-left: 4em;*/
         /*padding: 2em;*/
         background-color: var(--ligthblue);
@@ -610,14 +632,3 @@ input:focus {
 }
 
 
-
-/* HTML: <div class="loader"></div> */
-.loader {
-    width: 50px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 8px solid lightblue;
-    border-right-color: orange;
-    animation: l2 1s infinite linear;
-}
-@keyframes l2 {to{transform: rotate(1turn)}}

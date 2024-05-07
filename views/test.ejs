@@ -17,7 +17,7 @@
 
 <h3>gegevens over het his</h3>
 
-<ul class="section_house_details">
+<ul class="ul_house_details">
 
     <% if (house.poster_image) { %>
     <li>
@@ -30,14 +30,14 @@
             <img src="https://fdnd-agency.directus.app/assets/<%= house.poster_image.id %>?width=600&height=400&fit=cover"
                  width="<%= house.poster_image.width %>"
                  height="<%= house.poster_image.height %>"
-                 class="house_details_img__image_house_score"
+                 class="house_details_img__image"
                  alt="image-house">
             <% } %>
         </picture>
     </li>
     <li class="house_details__li"><%= house.street %> <%= house.house_nr %> </li>
     <li class=""><%= house.city %> <%= house.postal_code %></li>
-    <li class="house_detai__price_house">€<%= new Intl.NumberFormat("de-DE").format(house.price) %></li>
+    <li class="house_details_li__price_house">€<%= new Intl.NumberFormat("de-DE").format(house.price) %></li>
 
 </ul>
 <h1>aanpassen van de data</h1>
@@ -66,7 +66,7 @@
     <label for="new_score" class="form_inputfields__label-inputfield"><span>geeef een neiwue naam op:</span>
         <input type="number" id="tuin" name="new_score" value="" placeholder="0" >
     </label>
-    <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
+    <button type="submit" class="section-give_notese__buton">Opslaan</button>
     <!--                <div class="loader hide_loader"></div>-->
 
 </form>
@@ -75,12 +75,12 @@
     <h2 class="">Notities</h2>
     <p>Hier kunt u een notitie achterlaten.</p>
 
-    <form method="POST" action="/test/<%= house.id %>" class="section-give_notes__text-input-notes-form">
+    <form method="POST" action="/test/<%= house.id %>" class="section-give_notes__form">
         <input type="hidden" value="<%= house.id %>">
         <label for="bericht" aria-label="laat uw noitite achter">
             <textarea id="note" name="note"></textarea>
         </label>
-        <button type="submit" class="form_inputfields__save_buton">Opslaan</button>
+        <button type="submit" class="section-give_notese__buton">Opslaan</button>
 
     </form>
 
