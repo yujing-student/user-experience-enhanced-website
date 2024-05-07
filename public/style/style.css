@@ -165,9 +165,9 @@ header {
     display: flex;
     border: none;
 }
-
+/*************************/
 /*huizen lijsten dus index*/
-
+/*************************/
 .div-grid-house-lists {
     display: grid;
     gap: 3.5em;
@@ -253,9 +253,9 @@ header {
     margin-bottom: 1em;
 
 }
-
+/************/
 /*lijsten page*/
-
+/************/
 .ul-users_lijst {
     /*background-color: var(--ligthblue);*/
     display: flex;
@@ -352,8 +352,9 @@ header {
     color: var(--black);
 
 }
-
+/************/
 /*score pagina*/
+/************/
 .ul_house_details {
     /*margin-top: 2em;*/
     margin: 2em 0 0 0;
@@ -451,6 +452,7 @@ input:focus {
     flex-direction: column;
 }
 /* HTML: <div class="loader"></div> */
+/*https://css-loaders.com/spinner/*/
 .loader {
     width: 50px;
     aspect-ratio: 1;
@@ -515,9 +517,9 @@ input:focus {
 
 
 }
-
+/************************/
 /*huizenlijsten dus index*/
-
+/************************/
 @media (width >= 400px) {
 
 
@@ -533,8 +535,9 @@ input:focus {
 
 
     }
-
+    /************************/
     /*    lijsten pagina*/
+    /************************/
     .list_houses_grid {
         display: grid;
         gap: 3.5em;
@@ -552,8 +555,9 @@ input:focus {
 }
 
 @media (width >= 600px) {
-
+    /************************/
     /*index*/
+    /************************/
     .ol_names-of-houses {
         max-width: 86em;
     }
@@ -567,8 +571,9 @@ input:focus {
         margin: 2em 0 0 0;
     }
 
-
+    /************************/
     /*    score*/
+    /************************/
     .score_otbers_grid_container__h2{
         margin: 0
     }
@@ -590,8 +595,9 @@ input:focus {
 
 @media (width >= 570px) {
 
-
+    /************************/
     /*lijsten*/
+    /************************/
     .ul-users_lijst {
         display: grid;
         /*grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));*/
