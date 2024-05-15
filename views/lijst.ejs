@@ -8,25 +8,31 @@
         <p class="hr_bottom_p">Klik op je icoontje om je eigen lijst of de lijst van een ander te zien.</p>
 
             <ul class="ul-users_lijst">
+
                 <% users.forEach(users => { %>
-                <li class="users__li_lijst">
 
-                    <picture>
+                    <li class="users__li_lijst">
+                        <% if (users.avatar) { %>
+                        <picture>
 
-                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar%>?width=600&height=400&fit=cover&format=webp"
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id%>?width=600&height=400&fit=cover&format=webp"
                                 type="image/webp">
-                        <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=webp"
+                        <source srcset="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id %>?width=600&height=400&fit=cover&format=webp"
                                 type="image/avif">
 
-                        <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover"
+                        <img src="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id %>?width=600&height=400&fit=cover"
                              alt="House Image" width="<%= users.width %>"
                              height=" <%= users.height %>" class="users__show_avatars"
                         >
-                    </picture>
+                        </picture>
 
-                </li>
-                    <% }) %>
+                            <% } else { %>
+                                <p>er is geen user avatar</p>
+                            <% } %>
 
+                    </li>
+
+                <% }) %>
 
             </ul>
 

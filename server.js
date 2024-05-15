@@ -8,7 +8,7 @@ const app = express()
 
 // sprint7/lesmatariaal/S07W2-02-Filteren-sorteren.pdf  use this for     filter and sort a manuel
 // make variable to use
-const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?fields=*.*.`)
+const users = await fetchJson(`https://fdnd-agency.directus.app/items/f_users/?fields=*.*`)
 const baseUlr = fetchJson('https://fdnd-agency.directus.app/items/')
 
 
@@ -22,16 +22,16 @@ const message_score_page_data = [];
 
 
 // this is neccessary for getting the users images
-const users_image = users.data.map(avatar => {
-    console.log(avatar.avatar.id);
-    return {
-        id_avatar: avatar.avatar.id,
-        width: avatar.avatar.width,
-        height: avatar.avatar.height,
-        name: avatar.name
-
-    };
-});
+// const users_image = users.data.map(avatar => {
+//     console.log(avatar.avatar.id);
+//     return {
+//         id_avatar: avatar.avatar.id,
+//         width: avatar.avatar.width,
+//         height: avatar.avatar.height,
+//         name: avatar.name
+//
+//     };
+// });
 // use ejs as view engine
 app.set('view engine', 'ejs')
 
@@ -42,7 +42,7 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}));//deze regel code gebruiken vanwege middelware zodat de data leesbaar gemaakt word
 // Stel het poortnummer in waar express op moet gaan luisteren
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8005)
 
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
@@ -51,11 +51,14 @@ app.listen(app.get('port'), function () {
     console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
+
 // setups of the routes
 app.get('/', async function (request, response) {
+
     fetchJson(`https://fdnd-agency.directus.app/items/f_list/?fields=*.*.*.*`)
         // fetchJson(`${baseUlr}f_list/?fields=*.*.*.*`)
         // when the fetchjson is succeful execute the .then
+
         .then(houses_list => {
             if (houses_list.data) {//check if the data exist
                 // the data of the houses is in 1 nested array so you need to use array.map
@@ -67,6 +70,10 @@ app.get('/', async function (request, response) {
                         image: house.f_houses_id.poster_image
                     }))
                 }));
+
+
+                console.log(JSON.stringify(housedetails))
+
                 response.render('index', {lists: housedetails});//Render the EJS template using the object's key-value pairs
             } else {
                 console.error('No favorite houses data found');
@@ -84,7 +91,7 @@ app.get('/lijsten/:id', async function (request, response) {
                     {
                         //     here i give the object with the varaible
                         list: lists.data,
-                        users: users_image
+                        users:users.data,
                     });
             } else {
                 // if not found
@@ -109,7 +116,7 @@ app.get('/score/:id', function (request, response) {
                 badkamer: bathroom,
                 tuin: garden,
                 notities: message_score_page_data,
-                users: users_image
+                users: users.data
 
 
             })
