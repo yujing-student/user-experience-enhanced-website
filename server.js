@@ -75,7 +75,7 @@ app.get('/', async function (request, response) {
 
                 // house.f_houses_id.poster_image.id
                 // console.log(JSON.stringify(house.f_houses_id.poster_image.id))
-
+                // houses_list.data["0"].houses["0"].f_houses_id.poster_image.width
                 response.render('index', {lists: housedetails});//Render the EJS template using the object's key-value pairs
             } else {
                 console.error('No favorite houses data found');
