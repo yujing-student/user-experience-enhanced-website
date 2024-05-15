@@ -137,25 +137,37 @@
 
             <ul class="score_others_grid_container__ul">
                 <% users.forEach(users => { %>
+
                     <li class="score_others_grid_container__li_users">
-                        <picture>
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=webp"
-                                    type="image/webp">
-                            <source srcset="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover&format=webp"
-                                    type="image/avif">
-                            <img src="https://fdnd-agency.directus.app/assets/<%= users.id_avatar %>?width=600&height=400&fit=cover"
-                                 alt="House Image" width="<%= users.width %>"
-                                 height=" <%= users.height %>" class="users__show_avatars"
-                            >
-                        </picture>
-                        <ul class="div_show_score_house__output_number">
+                        <% if (users.avatar) { %>
+                            <picture>
 
-                            <!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
-                            <%- include('partials/showScore', {result: house}); -%>
+                                <source srcset="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id%>?width=600&height=400&fit=cover&format=webp"
+                                        type="image/webp">
+                                <source srcset="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id %>?width=600&height=400&fit=cover&format=webp"
+                                        type="image/avif">
 
-                        </ul>
+                                <img src="https://fdnd-agency.directus.app/assets/<%=  users.avatar.id %>?width=600&height=400&fit=cover"
+                                     alt="House Image" width="<%= users.width %>"
+                                     height=" <%= users.height %>" class="users__show_avatars"
+                                >
+                            </picture>
+
+                        <% } else { %>
+                            <p>er is geen user avatar</p>
+                        <% } %>
+
+                            <ul class="div_show_score_house__output_number">
+
+                                <!--                            the reason for the partial has to do with the enhancement that if the enhancement is working show only the partial-->
+                                <%- include('partials/showScore', {result: house}); -%>
+
+                            </ul>
+
                     </li>
+
                 <% }) %>
+
 
             </ul>
 

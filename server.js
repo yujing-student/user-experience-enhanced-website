@@ -67,18 +67,37 @@ app.get('/', async function (request, response) {
                     title: listItem.title,
                     houses_array: listItem.houses.map(house => ({
                         id: house.id,
-                        image: house.f_houses_id.poster_image
+                        firsthouse: house.f_houses_id.poster_image.id,
+                        hooge: house.f_houses_id.poster_image.width,
+                        breedte: house.f_houses_id.poster_image.height
                     }))
                 }));
 
-
-                console.log(JSON.stringify(housedetails))
+                // house.f_houses_id.poster_image.id
+                // console.log(JSON.stringify(house.f_houses_id.poster_image.id))
 
                 response.render('index', {lists: housedetails});//Render the EJS template using the object's key-value pairs
             } else {
                 console.error('No favorite houses data found');
             }
         })
+// backup ophalen images dit was het eerst
+//
+//           <picture>
+//
+//
+//                             <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=400&height=300&fit=cover&format=avif"
+//                                     type="image/avif">
+//
+//                             <source srcset="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=400&height=300&fit=cover&format=webp"
+//                                     type="image/webp">
+//
+//
+//                             <img src="https://fdnd-agency.directus.app/assets/<%= list.houses_array[0].image.id %>?width=400&height=300&fit=cover"
+//                                  alt="Image of the house" width="<%= list.houses_array[0].image.width %>"
+//                                  height=" <%= list.houses_array[0].image.height %>" class="names-of-houses__img"
+//                             >
+//                         </picture>
 });
 
 
@@ -91,7 +110,7 @@ app.get('/lijsten/:id', async function (request, response) {
                     {
                         //     here i give the object with the varaible
                         list: lists.data,
-                        users:users.data,
+                        users: users.data,
                     });
             } else {
                 // if not found
