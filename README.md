@@ -9,7 +9,6 @@ Favortieten lijst funda
   * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
 ## Beschrijving
@@ -23,7 +22,7 @@ In dit project heb ik als opdracht gekregen van funda om een favorieten huizenli
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
-Als gebruiker wil ik mijn bewaarde huizen kunne opslaann in een favoritenlijst en een score aan het huis geven en ik wil de lijst kunnen delen met anderen
+Als gebruiker wil ik mijn bewaarde huizen kunne opslaan in een favoritenlijst en een score aan het huis geven en ik wil de lijst kunnen delen met anderen
 ### installatie
 Je drukt op de groen knop downloaden als zip daarna kan je de zip map uitpakken
 verder heb je een code editor zoals visual studio code nodig ook moet je node js geinstalleerd hebben en dan kan je in de 
@@ -41,7 +40,9 @@ npm start
 om het programma op te starten en dan zie je verolgens localhost:8000 in de terminal 
 staan
 
-[![img_1 .png](img_1.png)](https://raw.githubusercontent.com/yujing-student/the-web-is-for-everyone-interactive-functionality/main/img_1.png)
+
+<img src="https://raw.githubusercontent.com/yujing-student/the-web-is-for-everyone-interactive-functionality/main/img_1.png">
+
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 <ul>
@@ -69,7 +70,6 @@ de 3de laag is clientside extra javascript voor functionaliteiten of voor stylin
 
 
 </p>
-## Bronnen
 
 ## Licentie
 
